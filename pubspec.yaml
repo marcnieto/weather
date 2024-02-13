@@ -10,11 +10,24 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  freezed: ^2.4.5
+
+  # State management
+  freezed_annotation:
+  json_annotation:
+  equatable:
+  bloc:
+  flutter_bloc:
+  bloc_concurrency:
+  provider:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  json_serializable: ^6.7.1
+  build_runner:
 
 flutter:
   uses-material-design: true
