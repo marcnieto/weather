@@ -1,2 +1,2 @@
-# weather-app
-A Flutter Weather app
+# Weather by marcnieto
+A Flutter Weather app by Marc Nieto.
