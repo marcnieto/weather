@@ -12,9 +12,10 @@ abstract class OpenMeteoAPIClient {
   }) = _OpenMeteoAPIClient;
 
   @GET('/forecast')
-  Future<Forecast> getForecast(
-    @Query("latitude") double latitude,
-    @Query("longitude") double longitude, {
-    @Query('temperature_unit') String temperatureUnit = 'fahrenheit',
+  Future<Forecast> getForecast({
+    @Query("latitude") required double latitude,
+    @Query("longitude") required double longitude,
+    @Query('temperature_unit') String? temperatureUnit,
+    @Query('current') List<String>? current,
   });
 }

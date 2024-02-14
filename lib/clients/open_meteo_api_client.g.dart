@@ -19,17 +19,20 @@ class _OpenMeteoAPIClient implements OpenMeteoAPIClient {
   String? baseUrl;
 
   @override
-  Future<Forecast> getForecast(
-    double latitude,
-    double longitude, {
-    String temperatureUnit = 'fahrenheit',
+  Future<Forecast> getForecast({
+    required double latitude,
+    required double longitude,
+    String? temperatureUnit,
+    List<String>? current,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'latitude': latitude,
       r'longitude': longitude,
       r'temperature_unit': temperatureUnit,
+      r'current': current,
     };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result =

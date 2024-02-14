@@ -22,6 +22,9 @@ Forecast _$ForecastFromJson(Map<String, dynamic> json) {
 mixin _$Forecast {
   double get latitude => throw _privateConstructorUsedError;
   double get longitude => throw _privateConstructorUsedError;
+  Current? get current => throw _privateConstructorUsedError;
+  @JsonKey(name: 'current_units')
+  CurrentUnits? get currentUnits => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +37,14 @@ abstract class $ForecastCopyWith<$Res> {
   factory $ForecastCopyWith(Forecast value, $Res Function(Forecast) then) =
       _$ForecastCopyWithImpl<$Res, Forecast>;
   @useResult
-  $Res call({double latitude, double longitude});
+  $Res call(
+      {double latitude,
+      double longitude,
+      Current? current,
+      @JsonKey(name: 'current_units') CurrentUnits? currentUnits});
+
+  $CurrentCopyWith<$Res>? get current;
+  $CurrentUnitsCopyWith<$Res>? get currentUnits;
 }
 
 /// @nodoc
@@ -52,6 +62,8 @@ class _$ForecastCopyWithImpl<$Res, $Val extends Forecast>
   $Res call({
     Object? latitude = null,
     Object? longitude = null,
+    Object? current = freezed,
+    Object? currentUnits = freezed,
   }) {
     return _then(_value.copyWith(
       latitude: null == latitude
@@ -62,7 +74,39 @@ class _$ForecastCopyWithImpl<$Res, $Val extends Forecast>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double,
+      current: freezed == current
+          ? _value.current
+          : current // ignore: cast_nullable_to_non_nullable
+              as Current?,
+      currentUnits: freezed == currentUnits
+          ? _value.currentUnits
+          : currentUnits // ignore: cast_nullable_to_non_nullable
+              as CurrentUnits?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CurrentCopyWith<$Res>? get current {
+    if (_value.current == null) {
+      return null;
+    }
+
+    return $CurrentCopyWith<$Res>(_value.current!, (value) {
+      return _then(_value.copyWith(current: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CurrentUnitsCopyWith<$Res>? get currentUnits {
+    if (_value.currentUnits == null) {
+      return null;
+    }
+
+    return $CurrentUnitsCopyWith<$Res>(_value.currentUnits!, (value) {
+      return _then(_value.copyWith(currentUnits: value) as $Val);
+    });
   }
 }
 
@@ -74,7 +118,16 @@ abstract class _$$ForecastImplCopyWith<$Res>
       __$$ForecastImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double latitude, double longitude});
+  $Res call(
+      {double latitude,
+      double longitude,
+      Current? current,
+      @JsonKey(name: 'current_units') CurrentUnits? currentUnits});
+
+  @override
+  $CurrentCopyWith<$Res>? get current;
+  @override
+  $CurrentUnitsCopyWith<$Res>? get currentUnits;
 }
 
 /// @nodoc
@@ -90,6 +143,8 @@ class __$$ForecastImplCopyWithImpl<$Res>
   $Res call({
     Object? latitude = null,
     Object? longitude = null,
+    Object? current = freezed,
+    Object? currentUnits = freezed,
   }) {
     return _then(_$ForecastImpl(
       latitude: null == latitude
@@ -100,6 +155,14 @@ class __$$ForecastImplCopyWithImpl<$Res>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double,
+      current: freezed == current
+          ? _value.current
+          : current // ignore: cast_nullable_to_non_nullable
+              as Current?,
+      currentUnits: freezed == currentUnits
+          ? _value.currentUnits
+          : currentUnits // ignore: cast_nullable_to_non_nullable
+              as CurrentUnits?,
     ));
   }
 }
@@ -107,7 +170,11 @@ class __$$ForecastImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ForecastImpl implements _Forecast {
-  _$ForecastImpl({this.latitude = 0, this.longitude = 0});
+  _$ForecastImpl(
+      {this.latitude = 0,
+      this.longitude = 0,
+      this.current,
+      @JsonKey(name: 'current_units') this.currentUnits});
 
   factory _$ForecastImpl.fromJson(Map<String, dynamic> json) =>
       _$$ForecastImplFromJson(json);
@@ -118,10 +185,15 @@ class _$ForecastImpl implements _Forecast {
   @override
   @JsonKey()
   final double longitude;
+  @override
+  final Current? current;
+  @override
+  @JsonKey(name: 'current_units')
+  final CurrentUnits? currentUnits;
 
   @override
   String toString() {
-    return 'Forecast(latitude: $latitude, longitude: $longitude)';
+    return 'Forecast(latitude: $latitude, longitude: $longitude, current: $current, currentUnits: $currentUnits)';
   }
 
   @override
@@ -132,12 +204,16 @@ class _$ForecastImpl implements _Forecast {
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
-                other.longitude == longitude));
+                other.longitude == longitude) &&
+            (identical(other.current, current) || other.current == current) &&
+            (identical(other.currentUnits, currentUnits) ||
+                other.currentUnits == currentUnits));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, latitude, longitude);
+  int get hashCode =>
+      Object.hash(runtimeType, latitude, longitude, current, currentUnits);
 
   @JsonKey(ignore: true)
   @override
@@ -154,7 +230,11 @@ class _$ForecastImpl implements _Forecast {
 }
 
 abstract class _Forecast implements Forecast {
-  factory _Forecast({final double latitude, final double longitude}) =
+  factory _Forecast(
+          {final double latitude,
+          final double longitude,
+          final Current? current,
+          @JsonKey(name: 'current_units') final CurrentUnits? currentUnits}) =
       _$ForecastImpl;
 
   factory _Forecast.fromJson(Map<String, dynamic> json) =
@@ -164,6 +244,11 @@ abstract class _Forecast implements Forecast {
   double get latitude;
   @override
   double get longitude;
+  @override
+  Current? get current;
+  @override
+  @JsonKey(name: 'current_units')
+  CurrentUnits? get currentUnits;
   @override
   @JsonKey(ignore: true)
   _$$ForecastImplCopyWith<_$ForecastImpl> get copyWith =>
