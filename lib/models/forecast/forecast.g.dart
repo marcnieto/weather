@@ -17,6 +17,18 @@ _$ForecastImpl _$$ForecastImplFromJson(Map<String, dynamic> json) =>
           ? null
           : CurrentUnits.fromJson(
               json['current_units'] as Map<String, dynamic>),
+      daily: json['daily'] == null
+          ? null
+          : Daily.fromJson(json['daily'] as Map<String, dynamic>),
+      dailyUnits: json['daily_units'] == null
+          ? null
+          : DailyUnits.fromJson(json['daily_units'] as Map<String, dynamic>),
+      hourly: json['hourly'] == null
+          ? null
+          : Hourly.fromJson(json['hourly'] as Map<String, dynamic>),
+      hourlyUnits: json['hourly_units'] == null
+          ? null
+          : HourlyUnits.fromJson(json['hourly_units'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$ForecastImplToJson(_$ForecastImpl instance) =>
@@ -25,4 +37,8 @@ Map<String, dynamic> _$$ForecastImplToJson(_$ForecastImpl instance) =>
       'longitude': instance.longitude,
       'current': instance.current,
       'current_units': instance.currentUnits,
+      'daily': instance.daily,
+      'daily_units': instance.dailyUnits,
+      'hourly': instance.hourly,
+      'hourly_units': instance.hourlyUnits,
     };

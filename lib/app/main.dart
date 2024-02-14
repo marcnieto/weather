@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:weather/app/environment.dart';
-import 'package:weather/clients/open_meteo_api_client.dart';
 import 'package:provider/provider.dart';
+import 'package:weather/clients/open_meteo_api/open_meteo_api_client.dart';
 import 'package:weather/models/forecast/forecast.dart';
 import 'package:weather/utilities/weather_keys.dart';
 

@@ -16,6 +16,9 @@ abstract class OpenMeteoAPIClient {
     @Query("latitude") required double latitude,
     @Query("longitude") required double longitude,
     @Query('temperature_unit') String? temperatureUnit,
+    @Query('forecast_days') int? forecastDays,
     @Query('current') List<String>? current,
+    @Query('hourly') List<String>? hourly,
+    @Query('daily') List<String>? daily,
   });
 }

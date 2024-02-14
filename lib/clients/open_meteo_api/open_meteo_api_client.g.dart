@@ -23,14 +23,20 @@ class _OpenMeteoAPIClient implements OpenMeteoAPIClient {
     required double latitude,
     required double longitude,
     String? temperatureUnit,
+    int? forecastDays,
     List<String>? current,
+    List<String>? hourly,
+    List<String>? daily,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'latitude': latitude,
       r'longitude': longitude,
       r'temperature_unit': temperatureUnit,
+      r'forecast_days': forecastDays,
       r'current': current,
+      r'hourly': hourly,
+      r'daily': daily,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
