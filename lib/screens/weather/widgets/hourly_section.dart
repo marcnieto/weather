@@ -24,6 +24,7 @@ class HourlySection extends StatelessWidget {
               property.time.toHourlyFormat(),
               style: TextStyleSpec.normalSmallLight,
             ),
+            const Spacer(),
             WeatherHelper.emojiForWeatherCode(
               code: property.weatherCode,
               isDay: property.isDay,
@@ -35,6 +36,7 @@ class HourlySection extends StatelessWidget {
                 '${property.precipitationProbability.round()}${property.precipitationProbabilityUnit}',
                 style: TextStyleSpec.normalSmallLight,
               ),
+            const Spacer(),
             Text(
               '${property.temperature.round()}${property.temperatureUnit}',
               style: TextStyleSpec.normalSmallLight,
@@ -43,11 +45,12 @@ class HourlySection extends StatelessWidget {
         ),
       );
 
-  Widget _body() => SizedBox(
-        height: 100,
+  Widget _listView() => SizedBox(
+        height: 80,
         child: ListView.separated(
-          padding: const EdgeInsets.only(left: 15),
-          separatorBuilder: (context, index) => const SizedBox(width: 10),
+          padding: const EdgeInsets.symmetric(horizontal: PaddingSpec.small),
+          separatorBuilder: (context, index) =>
+              const SizedBox(width: PaddingSpec.small),
           scrollDirection: Axis.horizontal,
           itemCount: hourly.time!.length,
           itemBuilder: (context, index) {
@@ -66,10 +69,39 @@ class HourlySection extends StatelessWidget {
         ),
       );
 
+  Widget _body() => Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(
+              CornerRadiusSpec.large,
+            ),
+            color: Colors.white.withOpacity(0.2)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(
+                left: PaddingSpec.medium,
+                top: PaddingSpec.medium,
+              ),
+              child: Text(
+                'HOURLY',
+                style: TextStyleSpec.boldLargeLight,
+              ),
+            ),
+            const SizedBox(height: PaddingSpec.small),
+            _listView(),
+            const SizedBox(height: PaddingSpec.medium),
+          ],
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
     return hourly.time != null && hourly.time!.isNotEmpty
-        ? _body()
+        ? Padding(
+            padding: const EdgeInsets.symmetric(horizontal: PaddingSpec.medium),
+            child: _body(),
+          )
         : Container();
   }
 }

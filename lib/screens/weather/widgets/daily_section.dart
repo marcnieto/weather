@@ -47,9 +47,10 @@ class DailySection extends StatelessWidget {
         ),
       );
 
-  Widget _body() => ListView.builder(
+  Widget _listView() => ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
+        padding: const EdgeInsets.only(bottom: PaddingSpec.small),
         itemCount: daily.time!.length,
         itemBuilder: (context, index) {
           final property = DailyProperty(
@@ -66,8 +67,39 @@ class DailySection extends StatelessWidget {
         },
       );
 
+  Widget _body() => Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(
+              CornerRadiusSpec.large,
+            ),
+            color: Colors.white.withOpacity(0.2)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(
+                left: PaddingSpec.medium,
+                top: PaddingSpec.medium,
+              ),
+              child: Text(
+                'DAILY',
+                style: TextStyleSpec.boldLargeLight,
+              ),
+            ),
+            _listView(),
+          ],
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
-    return daily.time != null && daily.time!.isNotEmpty ? _body() : Container();
+    return daily.time != null && daily.time!.isNotEmpty
+        ? Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: PaddingSpec.medium,
+            ),
+            child: _body(),
+          )
+        : Container();
   }
 }
