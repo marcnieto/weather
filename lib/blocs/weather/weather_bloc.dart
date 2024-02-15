@@ -13,17 +13,25 @@ part 'weather_state.dart';
 
 const List<String> kCurrentWeatherProperties = [
   CurrentWeatherKeys.temperature,
-  CurrentWeatherKeys.apparentTemperature,
-  CurrentWeatherKeys.cloudCover,
-  CurrentWeatherKeys.precipitation,
   CurrentWeatherKeys.windSpeed,
   CurrentWeatherKeys.windDirection,
+  CurrentWeatherKeys.weatherCode,
+  CurrentWeatherKeys.relativeHumidity,
+  CurrentWeatherKeys.isDay,
 ];
 
-const List<String> khourlyWeatherProperties = [
+const List<String> kHourlyWeatherProperties = [
   HourlyWeatherKeys.temperature,
-  HourlyWeatherKeys.cloudCover,
   HourlyWeatherKeys.precipitationProbability,
+  HourlyWeatherKeys.weatherCode,
+  HourlyWeatherKeys.isDay,
+];
+
+const List<String> kDailyWeatherProperties = [
+  DailyWeatherKeys.temperatureMax,
+  DailyWeatherKeys.temperatureMin,
+  DailyWeatherKeys.weatherCode,
+  DailyWeatherKeys.precipitationProbabilityMax,
 ];
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
@@ -57,33 +65,41 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
     emit(const WeatherState.loading());
 
-    final List<Forecast> forecasts = [];
+    try {
+      final List<Forecast> forecasts = [];
 
-    if (currentLocation != null) {
-      final forecast = await repository.getForecast(
-        latitude: currentLocation.latitude,
-        longitude: currentLocation.longitude,
-        temperatureUnit: preferences.temperatureUnit,
-        currentWeatherProperties: kCurrentWeatherProperties,
-        hourlyWeatherProperties:
-            preferences.showHourlyForecast ? khourlyWeatherProperties : null,
-      );
-      forecasts.add(forecast);
+      if (currentLocation != null) {
+        final forecast = await repository.getForecast(
+          latitude: currentLocation.latitude,
+          longitude: currentLocation.longitude,
+          temperatureUnit: preferences.temperatureUnit,
+          currentWeatherProperties: kCurrentWeatherProperties,
+          hourlyWeatherProperties:
+              preferences.showHourlyForecast ? kHourlyWeatherProperties : null,
+          dailyWeatherProperties:
+              preferences.showDailyForecast ? kDailyWeatherProperties : null,
+        );
+        forecasts.add(forecast);
+      }
+
+      for (final location in preferences.locations) {
+        final forecast = await repository.getForecast(
+          latitude: location.latitude,
+          longitude: location.longitude,
+          temperatureUnit: preferences.temperatureUnit,
+          currentWeatherProperties: kCurrentWeatherProperties,
+          hourlyWeatherProperties:
+              preferences.showHourlyForecast ? kHourlyWeatherProperties : null,
+          dailyWeatherProperties:
+              preferences.showDailyForecast ? kDailyWeatherProperties : null,
+        );
+        forecasts.add(forecast);
+      }
+
+      emit(WeatherState.loaded(forecasts: forecasts));
+    } catch (_) {
+      emit(const WeatherState.error());
     }
-
-    for (final location in preferences.locations) {
-      final forecast = await repository.getForecast(
-        latitude: location.latitude,
-        longitude: location.longitude,
-        temperatureUnit: preferences.temperatureUnit,
-        currentWeatherProperties: kCurrentWeatherProperties,
-        hourlyWeatherProperties:
-            preferences.showHourlyForecast ? khourlyWeatherProperties : null,
-      );
-      forecasts.add(forecast);
-    }
-
-    emit(WeatherState.loaded(forecasts: forecasts));
   }
 
   Future<void> _onRequestLocationServices(

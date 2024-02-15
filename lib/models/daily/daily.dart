@@ -16,6 +16,7 @@ class Daily with _$Daily {
     @JsonKey(name: DailyWeatherKeys.sunset) List<DateTime>? sunset,
     @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
     List<double>? precipitationProbabilityMax,
+    @JsonKey(name: DailyWeatherKeys.weatherCode) List<int>? weatherCode,
   }) = _Daily;
 
   factory Daily.fromJson(Map<String, dynamic> json) => _$DailyFromJson(json);

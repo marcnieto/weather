@@ -36,6 +36,7 @@ Future<void> main() async {
   final userPreferences = UserPreferences(
     currentLocation: currentLocation,
     showHourlyForecast: true,
+    showDailyForecast: true,
   );
 
   // Blocs

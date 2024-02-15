@@ -17,8 +17,9 @@ _$HourlyImpl _$$HourlyImplFromJson(Map<String, dynamic> json) => _$HourlyImpl(
           (json['precipitation_probability'] as List<dynamic>?)
               ?.map((e) => (e as num).toDouble())
               .toList(),
-      cloudCover: (json['cloud_cover'] as List<dynamic>?)
-          ?.map((e) => (e as num).toDouble())
+      isDay: (json['is_day'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      weatherCode: (json['weather_code'] as List<dynamic>?)
+          ?.map((e) => e as int)
           .toList(),
     );
 
@@ -27,5 +28,6 @@ Map<String, dynamic> _$$HourlyImplToJson(_$HourlyImpl instance) =>
       'time': instance.time?.map((e) => e.toIso8601String()).toList(),
       'temperature_2m': instance.temperature,
       'precipitation_probability': instance.precipitationProbability,
-      'cloud_cover': instance.cloudCover,
+      'is_day': instance.isDay,
+      'weather_code': instance.weatherCode,
     };

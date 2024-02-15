@@ -18,6 +18,7 @@ abstract class OpenMeteoAPIClient {
     @Query('temperature_unit') String? temperatureUnit,
     @Query('wind_speed_unit') String? windSpeedUnit,
     @Query('forecast_days') int? forecastDays,
+    @Query('forecast_hours') int? forecastHours,
     @Query('current') List<String>? current,
     @Query('hourly') List<String>? hourly,
     @Query('daily') List<String>? daily,

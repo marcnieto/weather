@@ -10,13 +10,10 @@ class Current with _$Current {
     DateTime? time,
     @JsonKey(name: CurrentWeatherKeys.temperature) double? temperature,
     @JsonKey(name: CurrentWeatherKeys.relativeHumidity) double? humidity,
-    @JsonKey(name: CurrentWeatherKeys.precipitation) double? precipitation,
-    @JsonKey(name: CurrentWeatherKeys.rain) double? rain,
-    @JsonKey(name: CurrentWeatherKeys.showers) double? showers,
-    @JsonKey(name: CurrentWeatherKeys.snowfall) double? snowfall,
     @JsonKey(name: CurrentWeatherKeys.windSpeed) double? windSpeed,
     @JsonKey(name: CurrentWeatherKeys.windDirection) double? direction,
-    @JsonKey(name: CurrentWeatherKeys.cloudCover) double? cloudCover,
+    @JsonKey(name: CurrentWeatherKeys.isDay) int? isDay,
+    @JsonKey(name: CurrentWeatherKeys.weatherCode) int? weatherCode,
   }) = _Current;
 
   factory Current.fromJson(Map<String, dynamic> json) =>

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class ColorSpec {
   static const Color skyBlue = Color(0xFF448EE4);
+  static const Color moonYellow = Color(0xFFFBF6D8);
 }
 
 abstract class PaddingSpec {

@@ -9,7 +9,6 @@ class HourlyUnits with _$HourlyUnits {
   factory HourlyUnits({
     String? time,
     @JsonKey(name: HourlyWeatherKeys.temperature) String? temperature,
-    @JsonKey(name: HourlyWeatherKeys.cloudCover) String? cloudCover,
     @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
     String? precipitationProbability,
   }) = _HourlyUnits;

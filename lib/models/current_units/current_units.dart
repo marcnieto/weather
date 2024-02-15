@@ -10,13 +10,8 @@ class CurrentUnits with _$CurrentUnits {
     String? time,
     @JsonKey(name: CurrentWeatherKeys.temperature) String? temperature,
     @JsonKey(name: CurrentWeatherKeys.relativeHumidity) String? humidity,
-    @JsonKey(name: CurrentWeatherKeys.precipitation) String? precipitation,
-    @JsonKey(name: CurrentWeatherKeys.rain) String? rain,
-    @JsonKey(name: CurrentWeatherKeys.showers) String? showers,
-    @JsonKey(name: CurrentWeatherKeys.snowfall) String? snowfall,
     @JsonKey(name: CurrentWeatherKeys.windSpeed) String? windSpeed,
     @JsonKey(name: CurrentWeatherKeys.windDirection) String? windDirection,
-    @JsonKey(name: CurrentWeatherKeys.cloudCover) String? cloudCover,
   }) = _CurrentUnits;
 
   factory CurrentUnits.fromJson(Map<String, dynamic> json) =>

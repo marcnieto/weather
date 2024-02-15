@@ -32,6 +32,8 @@ mixin _$Daily {
   @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
   List<double>? get precipitationProbabilityMax =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: DailyWeatherKeys.weatherCode)
+  List<int>? get weatherCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +54,8 @@ abstract class $DailyCopyWith<$Res> {
       @JsonKey(name: DailyWeatherKeys.sunrise) List<DateTime>? sunrise,
       @JsonKey(name: DailyWeatherKeys.sunset) List<DateTime>? sunset,
       @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
-      List<double>? precipitationProbabilityMax});
+      List<double>? precipitationProbabilityMax,
+      @JsonKey(name: DailyWeatherKeys.weatherCode) List<int>? weatherCode});
 }
 
 /// @nodoc
@@ -74,6 +77,7 @@ class _$DailyCopyWithImpl<$Res, $Val extends Daily>
     Object? sunrise = freezed,
     Object? sunset = freezed,
     Object? precipitationProbabilityMax = freezed,
+    Object? weatherCode = freezed,
   }) {
     return _then(_value.copyWith(
       time: freezed == time
@@ -100,6 +104,10 @@ class _$DailyCopyWithImpl<$Res, $Val extends Daily>
           ? _value.precipitationProbabilityMax
           : precipitationProbabilityMax // ignore: cast_nullable_to_non_nullable
               as List<double>?,
+      weatherCode: freezed == weatherCode
+          ? _value.weatherCode
+          : weatherCode // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ) as $Val);
   }
 }
@@ -120,7 +128,8 @@ abstract class _$$DailyImplCopyWith<$Res> implements $DailyCopyWith<$Res> {
       @JsonKey(name: DailyWeatherKeys.sunrise) List<DateTime>? sunrise,
       @JsonKey(name: DailyWeatherKeys.sunset) List<DateTime>? sunset,
       @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
-      List<double>? precipitationProbabilityMax});
+      List<double>? precipitationProbabilityMax,
+      @JsonKey(name: DailyWeatherKeys.weatherCode) List<int>? weatherCode});
 }
 
 /// @nodoc
@@ -140,6 +149,7 @@ class __$$DailyImplCopyWithImpl<$Res>
     Object? sunrise = freezed,
     Object? sunset = freezed,
     Object? precipitationProbabilityMax = freezed,
+    Object? weatherCode = freezed,
   }) {
     return _then(_$DailyImpl(
       time: freezed == time
@@ -166,6 +176,10 @@ class __$$DailyImplCopyWithImpl<$Res>
           ? _value._precipitationProbabilityMax
           : precipitationProbabilityMax // ignore: cast_nullable_to_non_nullable
               as List<double>?,
+      weatherCode: freezed == weatherCode
+          ? _value._weatherCode
+          : weatherCode // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ));
   }
 }
@@ -182,13 +196,16 @@ class _$DailyImpl implements _Daily {
       @JsonKey(name: DailyWeatherKeys.sunrise) final List<DateTime>? sunrise,
       @JsonKey(name: DailyWeatherKeys.sunset) final List<DateTime>? sunset,
       @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
-      final List<double>? precipitationProbabilityMax})
+      final List<double>? precipitationProbabilityMax,
+      @JsonKey(name: DailyWeatherKeys.weatherCode)
+      final List<int>? weatherCode})
       : _time = time,
         _temperatureMax = temperatureMax,
         _temperatureMin = temperatureMin,
         _sunrise = sunrise,
         _sunset = sunset,
-        _precipitationProbabilityMax = precipitationProbabilityMax;
+        _precipitationProbabilityMax = precipitationProbabilityMax,
+        _weatherCode = weatherCode;
 
   factory _$DailyImpl.fromJson(Map<String, dynamic> json) =>
       _$$DailyImplFromJson(json);
@@ -259,9 +276,20 @@ class _$DailyImpl implements _Daily {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<int>? _weatherCode;
+  @override
+  @JsonKey(name: DailyWeatherKeys.weatherCode)
+  List<int>? get weatherCode {
+    final value = _weatherCode;
+    if (value == null) return null;
+    if (_weatherCode is EqualUnmodifiableListView) return _weatherCode;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'Daily(time: $time, temperatureMax: $temperatureMax, temperatureMin: $temperatureMin, sunrise: $sunrise, sunset: $sunset, precipitationProbabilityMax: $precipitationProbabilityMax)';
+    return 'Daily(time: $time, temperatureMax: $temperatureMax, temperatureMin: $temperatureMin, sunrise: $sunrise, sunset: $sunset, precipitationProbabilityMax: $precipitationProbabilityMax, weatherCode: $weatherCode)';
   }
 
   @override
@@ -278,7 +306,9 @@ class _$DailyImpl implements _Daily {
             const DeepCollectionEquality().equals(other._sunset, _sunset) &&
             const DeepCollectionEquality().equals(
                 other._precipitationProbabilityMax,
-                _precipitationProbabilityMax));
+                _precipitationProbabilityMax) &&
+            const DeepCollectionEquality()
+                .equals(other._weatherCode, _weatherCode));
   }
 
   @JsonKey(ignore: true)
@@ -290,7 +320,8 @@ class _$DailyImpl implements _Daily {
       const DeepCollectionEquality().hash(_temperatureMin),
       const DeepCollectionEquality().hash(_sunrise),
       const DeepCollectionEquality().hash(_sunset),
-      const DeepCollectionEquality().hash(_precipitationProbabilityMax));
+      const DeepCollectionEquality().hash(_precipitationProbabilityMax),
+      const DeepCollectionEquality().hash(_weatherCode));
 
   @JsonKey(ignore: true)
   @override
@@ -316,7 +347,9 @@ abstract class _Daily implements Daily {
       @JsonKey(name: DailyWeatherKeys.sunrise) final List<DateTime>? sunrise,
       @JsonKey(name: DailyWeatherKeys.sunset) final List<DateTime>? sunset,
       @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
-      final List<double>? precipitationProbabilityMax}) = _$DailyImpl;
+      final List<double>? precipitationProbabilityMax,
+      @JsonKey(name: DailyWeatherKeys.weatherCode)
+      final List<int>? weatherCode}) = _$DailyImpl;
 
   factory _Daily.fromJson(Map<String, dynamic> json) = _$DailyImpl.fromJson;
 
@@ -337,6 +370,9 @@ abstract class _Daily implements Daily {
   @override
   @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
   List<double>? get precipitationProbabilityMax;
+  @override
+  @JsonKey(name: DailyWeatherKeys.weatherCode)
+  List<int>? get weatherCode;
   @override
   @JsonKey(ignore: true)
   _$$DailyImplCopyWith<_$DailyImpl> get copyWith =>

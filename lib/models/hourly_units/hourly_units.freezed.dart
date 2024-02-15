@@ -23,8 +23,6 @@ mixin _$HourlyUnits {
   String? get time => throw _privateConstructorUsedError;
   @JsonKey(name: HourlyWeatherKeys.temperature)
   String? get temperature => throw _privateConstructorUsedError;
-  @JsonKey(name: HourlyWeatherKeys.cloudCover)
-  String? get cloudCover => throw _privateConstructorUsedError;
   @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
   String? get precipitationProbability => throw _privateConstructorUsedError;
 
@@ -43,7 +41,6 @@ abstract class $HourlyUnitsCopyWith<$Res> {
   $Res call(
       {String? time,
       @JsonKey(name: HourlyWeatherKeys.temperature) String? temperature,
-      @JsonKey(name: HourlyWeatherKeys.cloudCover) String? cloudCover,
       @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
       String? precipitationProbability});
 }
@@ -63,7 +60,6 @@ class _$HourlyUnitsCopyWithImpl<$Res, $Val extends HourlyUnits>
   $Res call({
     Object? time = freezed,
     Object? temperature = freezed,
-    Object? cloudCover = freezed,
     Object? precipitationProbability = freezed,
   }) {
     return _then(_value.copyWith(
@@ -74,10 +70,6 @@ class _$HourlyUnitsCopyWithImpl<$Res, $Val extends HourlyUnits>
       temperature: freezed == temperature
           ? _value.temperature
           : temperature // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cloudCover: freezed == cloudCover
-          ? _value.cloudCover
-          : cloudCover // ignore: cast_nullable_to_non_nullable
               as String?,
       precipitationProbability: freezed == precipitationProbability
           ? _value.precipitationProbability
@@ -98,7 +90,6 @@ abstract class _$$HourlyUnitsImplCopyWith<$Res>
   $Res call(
       {String? time,
       @JsonKey(name: HourlyWeatherKeys.temperature) String? temperature,
-      @JsonKey(name: HourlyWeatherKeys.cloudCover) String? cloudCover,
       @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
       String? precipitationProbability});
 }
@@ -116,7 +107,6 @@ class __$$HourlyUnitsImplCopyWithImpl<$Res>
   $Res call({
     Object? time = freezed,
     Object? temperature = freezed,
-    Object? cloudCover = freezed,
     Object? precipitationProbability = freezed,
   }) {
     return _then(_$HourlyUnitsImpl(
@@ -127,10 +117,6 @@ class __$$HourlyUnitsImplCopyWithImpl<$Res>
       temperature: freezed == temperature
           ? _value.temperature
           : temperature // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cloudCover: freezed == cloudCover
-          ? _value.cloudCover
-          : cloudCover // ignore: cast_nullable_to_non_nullable
               as String?,
       precipitationProbability: freezed == precipitationProbability
           ? _value.precipitationProbability
@@ -146,7 +132,6 @@ class _$HourlyUnitsImpl implements _HourlyUnits {
   _$HourlyUnitsImpl(
       {this.time,
       @JsonKey(name: HourlyWeatherKeys.temperature) this.temperature,
-      @JsonKey(name: HourlyWeatherKeys.cloudCover) this.cloudCover,
       @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
       this.precipitationProbability});
 
@@ -159,15 +144,12 @@ class _$HourlyUnitsImpl implements _HourlyUnits {
   @JsonKey(name: HourlyWeatherKeys.temperature)
   final String? temperature;
   @override
-  @JsonKey(name: HourlyWeatherKeys.cloudCover)
-  final String? cloudCover;
-  @override
   @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
   final String? precipitationProbability;
 
   @override
   String toString() {
-    return 'HourlyUnits(time: $time, temperature: $temperature, cloudCover: $cloudCover, precipitationProbability: $precipitationProbability)';
+    return 'HourlyUnits(time: $time, temperature: $temperature, precipitationProbability: $precipitationProbability)';
   }
 
   @override
@@ -178,8 +160,6 @@ class _$HourlyUnitsImpl implements _HourlyUnits {
             (identical(other.time, time) || other.time == time) &&
             (identical(other.temperature, temperature) ||
                 other.temperature == temperature) &&
-            (identical(other.cloudCover, cloudCover) ||
-                other.cloudCover == cloudCover) &&
             (identical(
                     other.precipitationProbability, precipitationProbability) ||
                 other.precipitationProbability == precipitationProbability));
@@ -187,8 +167,8 @@ class _$HourlyUnitsImpl implements _HourlyUnits {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, time, temperature, cloudCover, precipitationProbability);
+  int get hashCode =>
+      Object.hash(runtimeType, time, temperature, precipitationProbability);
 
   @JsonKey(ignore: true)
   @override
@@ -208,7 +188,6 @@ abstract class _HourlyUnits implements HourlyUnits {
   factory _HourlyUnits(
       {final String? time,
       @JsonKey(name: HourlyWeatherKeys.temperature) final String? temperature,
-      @JsonKey(name: HourlyWeatherKeys.cloudCover) final String? cloudCover,
       @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
       final String? precipitationProbability}) = _$HourlyUnitsImpl;
 
@@ -220,9 +199,6 @@ abstract class _HourlyUnits implements HourlyUnits {
   @override
   @JsonKey(name: HourlyWeatherKeys.temperature)
   String? get temperature;
-  @override
-  @JsonKey(name: HourlyWeatherKeys.cloudCover)
-  String? get cloudCover;
   @override
   @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
   String? get precipitationProbability;

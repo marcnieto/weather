@@ -10,7 +10,6 @@ _$HourlyUnitsImpl _$$HourlyUnitsImplFromJson(Map<String, dynamic> json) =>
     _$HourlyUnitsImpl(
       time: json['time'] as String?,
       temperature: json['temperature_2m'] as String?,
-      cloudCover: json['cloud_cover'] as String?,
       precipitationProbability: json['precipitation_probability'] as String?,
     );
 
@@ -18,6 +17,5 @@ Map<String, dynamic> _$$HourlyUnitsImplToJson(_$HourlyUnitsImpl instance) =>
     <String, dynamic>{
       'time': instance.time,
       'temperature_2m': instance.temperature,
-      'cloud_cover': instance.cloudCover,
       'precipitation_probability': instance.precipitationProbability,
     };

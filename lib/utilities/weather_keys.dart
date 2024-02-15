@@ -1,20 +1,17 @@
 abstract class CurrentWeatherKeys {
   static const temperature = 'temperature_2m';
-  static const apparentTemperature = 'apparent_temperature';
   static const relativeHumidity = 'relative_humidity_2m';
-  static const cloudCover = 'cloud_cover';
-  static const precipitation = 'precipitation';
-  static const rain = 'rain';
-  static const showers = 'showers';
-  static const snowfall = 'snowfall';
   static const windSpeed = 'wind_speed_10m';
   static const windDirection = 'wind_direction_10m';
+  static const isDay = 'is_day';
+  static const weatherCode = 'weather_code';
 }
 
 abstract class HourlyWeatherKeys {
   static const temperature = 'temperature_2m';
-  static const cloudCover = 'cloud_cover';
   static const precipitationProbability = 'precipitation_probability';
+  static const isDay = 'is_day';
+  static const weatherCode = 'weather_code';
 }
 
 abstract class DailyWeatherKeys {
@@ -23,6 +20,7 @@ abstract class DailyWeatherKeys {
   static const sunrise = 'sunrise';
   static const sunset = 'sunset';
   static const precipitationProbabilityMax = 'precipitation_probability_max';
+  static const weatherCode = 'weather_code';
 }
 
 abstract class TemperatureUnits {

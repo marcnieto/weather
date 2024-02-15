@@ -26,6 +26,9 @@ _$DailyImpl _$$DailyImplFromJson(Map<String, dynamic> json) => _$DailyImpl(
           (json['precipitation_probability_max'] as List<dynamic>?)
               ?.map((e) => (e as num).toDouble())
               .toList(),
+      weatherCode: (json['weather_code'] as List<dynamic>?)
+          ?.map((e) => e as int)
+          .toList(),
     );
 
 Map<String, dynamic> _$$DailyImplToJson(_$DailyImpl instance) =>
@@ -36,4 +39,5 @@ Map<String, dynamic> _$$DailyImplToJson(_$DailyImpl instance) =>
       'sunrise': instance.sunrise?.map((e) => e.toIso8601String()).toList(),
       'sunset': instance.sunset?.map((e) => e.toIso8601String()).toList(),
       'precipitation_probability_max': instance.precipitationProbabilityMax,
+      'weather_code': instance.weatherCode,
     };
