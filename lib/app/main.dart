@@ -68,7 +68,7 @@ Future<void> main() async {
             create: (context) => weatherBloc,
           ),
         ],
-        child: const MaterialApp(
+        child: MaterialApp(
           home: WeatherScreen(),
         ),
       ),

@@ -24,7 +24,7 @@ _$DailyImpl _$$DailyImplFromJson(Map<String, dynamic> json) => _$DailyImpl(
           .toList(),
       precipitationProbabilityMax:
           (json['precipitation_probability_max'] as List<dynamic>?)
-              ?.map((e) => (e as num).toDouble())
+              ?.map((e) => (e as num?)?.toDouble())
               .toList(),
       weatherCode: (json['weather_code'] as List<dynamic>?)
           ?.map((e) => e as int)

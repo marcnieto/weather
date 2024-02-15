@@ -63,6 +63,11 @@ class CurrentSection extends StatelessWidget {
                   '${current.windSpeed?.round()}${units.windSpeed} Wind ${WeatherHelper.textForWindDirection(current.direction!)} ',
                   style: TextStyleSpec.normalLargeLight,
                 ),
+              if (current.humidity != null)
+                Text(
+                  '${current.humidity?.round()}${units.humidity} Humidity',
+                  style: TextStyleSpec.normalLargeLight,
+                ),
             ],
           );
         },

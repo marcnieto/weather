@@ -30,7 +30,7 @@ mixin _$Daily {
   @JsonKey(name: DailyWeatherKeys.sunset)
   List<DateTime>? get sunset => throw _privateConstructorUsedError;
   @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
-  List<double>? get precipitationProbabilityMax =>
+  List<double?>? get precipitationProbabilityMax =>
       throw _privateConstructorUsedError;
   @JsonKey(name: DailyWeatherKeys.weatherCode)
   List<int>? get weatherCode => throw _privateConstructorUsedError;
@@ -54,7 +54,7 @@ abstract class $DailyCopyWith<$Res> {
       @JsonKey(name: DailyWeatherKeys.sunrise) List<DateTime>? sunrise,
       @JsonKey(name: DailyWeatherKeys.sunset) List<DateTime>? sunset,
       @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
-      List<double>? precipitationProbabilityMax,
+      List<double?>? precipitationProbabilityMax,
       @JsonKey(name: DailyWeatherKeys.weatherCode) List<int>? weatherCode});
 }
 
@@ -103,7 +103,7 @@ class _$DailyCopyWithImpl<$Res, $Val extends Daily>
       precipitationProbabilityMax: freezed == precipitationProbabilityMax
           ? _value.precipitationProbabilityMax
           : precipitationProbabilityMax // ignore: cast_nullable_to_non_nullable
-              as List<double>?,
+              as List<double?>?,
       weatherCode: freezed == weatherCode
           ? _value.weatherCode
           : weatherCode // ignore: cast_nullable_to_non_nullable
@@ -128,7 +128,7 @@ abstract class _$$DailyImplCopyWith<$Res> implements $DailyCopyWith<$Res> {
       @JsonKey(name: DailyWeatherKeys.sunrise) List<DateTime>? sunrise,
       @JsonKey(name: DailyWeatherKeys.sunset) List<DateTime>? sunset,
       @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
-      List<double>? precipitationProbabilityMax,
+      List<double?>? precipitationProbabilityMax,
       @JsonKey(name: DailyWeatherKeys.weatherCode) List<int>? weatherCode});
 }
 
@@ -175,7 +175,7 @@ class __$$DailyImplCopyWithImpl<$Res>
       precipitationProbabilityMax: freezed == precipitationProbabilityMax
           ? _value._precipitationProbabilityMax
           : precipitationProbabilityMax // ignore: cast_nullable_to_non_nullable
-              as List<double>?,
+              as List<double?>?,
       weatherCode: freezed == weatherCode
           ? _value._weatherCode
           : weatherCode // ignore: cast_nullable_to_non_nullable
@@ -196,7 +196,7 @@ class _$DailyImpl implements _Daily {
       @JsonKey(name: DailyWeatherKeys.sunrise) final List<DateTime>? sunrise,
       @JsonKey(name: DailyWeatherKeys.sunset) final List<DateTime>? sunset,
       @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
-      final List<double>? precipitationProbabilityMax,
+      final List<double?>? precipitationProbabilityMax,
       @JsonKey(name: DailyWeatherKeys.weatherCode)
       final List<int>? weatherCode})
       : _time = time,
@@ -264,10 +264,10 @@ class _$DailyImpl implements _Daily {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<double>? _precipitationProbabilityMax;
+  final List<double?>? _precipitationProbabilityMax;
   @override
   @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
-  List<double>? get precipitationProbabilityMax {
+  List<double?>? get precipitationProbabilityMax {
     final value = _precipitationProbabilityMax;
     if (value == null) return null;
     if (_precipitationProbabilityMax is EqualUnmodifiableListView)
@@ -347,7 +347,7 @@ abstract class _Daily implements Daily {
       @JsonKey(name: DailyWeatherKeys.sunrise) final List<DateTime>? sunrise,
       @JsonKey(name: DailyWeatherKeys.sunset) final List<DateTime>? sunset,
       @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
-      final List<double>? precipitationProbabilityMax,
+      final List<double?>? precipitationProbabilityMax,
       @JsonKey(name: DailyWeatherKeys.weatherCode)
       final List<int>? weatherCode}) = _$DailyImpl;
 
@@ -369,7 +369,7 @@ abstract class _Daily implements Daily {
   List<DateTime>? get sunset;
   @override
   @JsonKey(name: DailyWeatherKeys.precipitationProbabilityMax)
-  List<double>? get precipitationProbabilityMax;
+  List<double?>? get precipitationProbabilityMax;
   @override
   @JsonKey(name: DailyWeatherKeys.weatherCode)
   List<int>? get weatherCode;

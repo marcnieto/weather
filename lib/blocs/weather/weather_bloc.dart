@@ -78,6 +78,8 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
               preferences.showHourlyForecast ? kHourlyWeatherProperties : null,
           dailyWeatherProperties:
               preferences.showDailyForecast ? kDailyWeatherProperties : null,
+          forecastDays:
+              preferences.showDailyForecast ? preferences.forecastDays : null,
         );
         forecasts.add(forecast);
       }
@@ -92,6 +94,8 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
               preferences.showHourlyForecast ? kHourlyWeatherProperties : null,
           dailyWeatherProperties:
               preferences.showDailyForecast ? kDailyWeatherProperties : null,
+          forecastDays:
+              preferences.showDailyForecast ? preferences.forecastDays : null,
         );
         forecasts.add(forecast);
       }

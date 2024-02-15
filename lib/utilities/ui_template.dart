@@ -57,4 +57,40 @@ abstract class TextStyleSpec {
     fontWeight: FontWeight.normal,
     fontSize: 20,
   );
+
+  static const TextStyle normalSmallDark = TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.normal,
+    fontSize: 12,
+  );
+
+  static const TextStyle normalMediumDark = TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.normal,
+    fontSize: 16,
+  );
+
+  static const TextStyle normalLargeDark = TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.normal,
+    fontSize: 20,
+  );
+
+  static const TextStyle boldSmallDark = TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.normal,
+    fontSize: 12,
+  );
+
+  static const TextStyle boldMediumDark = TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.normal,
+    fontSize: 16,
+  );
+
+  static const TextStyle boldLargeDark = TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.normal,
+    fontSize: 20,
+  );
 }

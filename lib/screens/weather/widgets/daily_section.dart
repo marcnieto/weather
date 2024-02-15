@@ -57,7 +57,8 @@ class DailySection extends StatelessWidget {
             time: daily.time![index],
             temperatureMax: daily.temperatureMax![index],
             temperatureMin: daily.temperatureMin![index],
-            precipitationProbability: daily.precipitationProbabilityMax![index],
+            precipitationProbability:
+                daily.precipitationProbabilityMax![index] ?? 0,
             weatherCode: daily.weatherCode![index],
             temperatureUnit: dailyUnits.temperatureMax!,
             precipitationProbabilityUnit:
