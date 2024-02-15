@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:weather/blocs/weather/weather_bloc.dart';
 import 'package:weather/clients/open_meteo_api/open_meteo_api_client.dart';
 import 'package:weather/models/location.dart';
+import 'package:weather/repositories/location/location_repository.dart';
 import 'package:weather/repositories/location/location_services_repository.dart';
 import 'package:weather/repositories/weather/weather_data_repository.dart';
 import 'package:weather/screens/weather/weather_screen.dart';
@@ -32,7 +33,10 @@ Future<void> main() async {
   Location? currentLocation = locationServicesEnabled
       ? await locationServices.getCurrentLocation()
       : null;
-  final userPreferences = UserPreferences(currentLocation: currentLocation);
+  final userPreferences = UserPreferences(
+    currentLocation: currentLocation,
+    showHourlyForecast: true,
+  );
 
   // Blocs
   final weatherBloc = WeatherBloc(
@@ -52,6 +56,9 @@ Future<void> main() async {
       providers: [
         Provider<UserPreferences>.value(
           value: userPreferences,
+        ),
+        Provider<LocationRepository>.value(
+          value: locationServices,
         ),
       ],
       child: MultiBlocProvider(

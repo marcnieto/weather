@@ -5,10 +5,26 @@ import 'package:weather/models/forecast/forecast.dart';
 import 'package:weather/repositories/location/location_repository.dart';
 import 'package:weather/repositories/weather/weather_repository.dart';
 import 'package:weather/user/user_preferences.dart';
+import 'package:weather/utilities/weather_keys.dart';
 
 part 'weather_bloc.freezed.dart';
 part 'weather_event.dart';
 part 'weather_state.dart';
+
+const List<String> kCurrentWeatherProperties = [
+  CurrentWeatherKeys.temperature,
+  CurrentWeatherKeys.apparentTemperature,
+  CurrentWeatherKeys.cloudCover,
+  CurrentWeatherKeys.precipitation,
+  CurrentWeatherKeys.windSpeed,
+  CurrentWeatherKeys.windDirection,
+];
+
+const List<String> khourlyWeatherProperties = [
+  HourlyWeatherKeys.temperature,
+  HourlyWeatherKeys.cloudCover,
+  HourlyWeatherKeys.precipitationProbability,
+];
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   final WeatherRepository repository;
@@ -24,6 +40,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
   void _mapEventsToStates() {
     on<WeatherEventLoad>(_onLoad);
+    on<WeatherEventRequestLocationServices>(_onRequestLocationServices);
   }
 
   Future<void> _onLoad(
@@ -47,6 +64,9 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
         latitude: currentLocation.latitude,
         longitude: currentLocation.longitude,
         temperatureUnit: preferences.temperatureUnit,
+        currentWeatherProperties: kCurrentWeatherProperties,
+        hourlyWeatherProperties:
+            preferences.showHourlyForecast ? khourlyWeatherProperties : null,
       );
       forecasts.add(forecast);
     }
@@ -56,10 +76,26 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
         latitude: location.latitude,
         longitude: location.longitude,
         temperatureUnit: preferences.temperatureUnit,
+        currentWeatherProperties: kCurrentWeatherProperties,
+        hourlyWeatherProperties:
+            preferences.showHourlyForecast ? khourlyWeatherProperties : null,
       );
       forecasts.add(forecast);
     }
 
     emit(WeatherState.loaded(forecasts: forecasts));
+  }
+
+  Future<void> _onRequestLocationServices(
+    WeatherEventRequestLocationServices event,
+    Emitter<WeatherState> emit,
+  ) async {
+    emit(const WeatherState.loading());
+    final permissionGranted = await locationServices.requestPermission();
+    if (permissionGranted) {
+      emit(const WeatherState.initial(locationServicesEnabled: true));
+    }
+
+    emit(const WeatherState.initial());
   }
 }

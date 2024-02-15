@@ -24,9 +24,10 @@ mixin _$Hourly {
   @JsonKey(name: HourlyWeatherKeys.temperature)
   List<double>? get temperature => throw _privateConstructorUsedError;
   @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
-  List<int>? get precipitationProbability => throw _privateConstructorUsedError;
+  List<double>? get precipitationProbability =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: HourlyWeatherKeys.cloudCover)
-  List<int>? get cloudCover => throw _privateConstructorUsedError;
+  List<double>? get cloudCover => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,8 +43,8 @@ abstract class $HourlyCopyWith<$Res> {
       {List<DateTime>? time,
       @JsonKey(name: HourlyWeatherKeys.temperature) List<double>? temperature,
       @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
-      List<int>? precipitationProbability,
-      @JsonKey(name: HourlyWeatherKeys.cloudCover) List<int>? cloudCover});
+      List<double>? precipitationProbability,
+      @JsonKey(name: HourlyWeatherKeys.cloudCover) List<double>? cloudCover});
 }
 
 /// @nodoc
@@ -76,11 +77,11 @@ class _$HourlyCopyWithImpl<$Res, $Val extends Hourly>
       precipitationProbability: freezed == precipitationProbability
           ? _value.precipitationProbability
           : precipitationProbability // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+              as List<double>?,
       cloudCover: freezed == cloudCover
           ? _value.cloudCover
           : cloudCover // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+              as List<double>?,
     ) as $Val);
   }
 }
@@ -96,8 +97,8 @@ abstract class _$$HourlyImplCopyWith<$Res> implements $HourlyCopyWith<$Res> {
       {List<DateTime>? time,
       @JsonKey(name: HourlyWeatherKeys.temperature) List<double>? temperature,
       @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
-      List<int>? precipitationProbability,
-      @JsonKey(name: HourlyWeatherKeys.cloudCover) List<int>? cloudCover});
+      List<double>? precipitationProbability,
+      @JsonKey(name: HourlyWeatherKeys.cloudCover) List<double>? cloudCover});
 }
 
 /// @nodoc
@@ -128,11 +129,11 @@ class __$$HourlyImplCopyWithImpl<$Res>
       precipitationProbability: freezed == precipitationProbability
           ? _value._precipitationProbability
           : precipitationProbability // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+              as List<double>?,
       cloudCover: freezed == cloudCover
           ? _value._cloudCover
           : cloudCover // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+              as List<double>?,
     ));
   }
 }
@@ -145,8 +146,9 @@ class _$HourlyImpl implements _Hourly {
       @JsonKey(name: HourlyWeatherKeys.temperature)
       final List<double>? temperature,
       @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
-      final List<int>? precipitationProbability,
-      @JsonKey(name: HourlyWeatherKeys.cloudCover) final List<int>? cloudCover})
+      final List<double>? precipitationProbability,
+      @JsonKey(name: HourlyWeatherKeys.cloudCover)
+      final List<double>? cloudCover})
       : _time = time,
         _temperature = temperature,
         _precipitationProbability = precipitationProbability,
@@ -176,10 +178,10 @@ class _$HourlyImpl implements _Hourly {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<int>? _precipitationProbability;
+  final List<double>? _precipitationProbability;
   @override
   @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
-  List<int>? get precipitationProbability {
+  List<double>? get precipitationProbability {
     final value = _precipitationProbability;
     if (value == null) return null;
     if (_precipitationProbability is EqualUnmodifiableListView)
@@ -188,10 +190,10 @@ class _$HourlyImpl implements _Hourly {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<int>? _cloudCover;
+  final List<double>? _cloudCover;
   @override
   @JsonKey(name: HourlyWeatherKeys.cloudCover)
-  List<int>? get cloudCover {
+  List<double>? get cloudCover {
     final value = _cloudCover;
     if (value == null) return null;
     if (_cloudCover is EqualUnmodifiableListView) return _cloudCover;
@@ -247,9 +249,9 @@ abstract class _Hourly implements Hourly {
       @JsonKey(name: HourlyWeatherKeys.temperature)
       final List<double>? temperature,
       @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
-      final List<int>? precipitationProbability,
+      final List<double>? precipitationProbability,
       @JsonKey(name: HourlyWeatherKeys.cloudCover)
-      final List<int>? cloudCover}) = _$HourlyImpl;
+      final List<double>? cloudCover}) = _$HourlyImpl;
 
   factory _Hourly.fromJson(Map<String, dynamic> json) = _$HourlyImpl.fromJson;
 
@@ -260,10 +262,10 @@ abstract class _Hourly implements Hourly {
   List<double>? get temperature;
   @override
   @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
-  List<int>? get precipitationProbability;
+  List<double>? get precipitationProbability;
   @override
   @JsonKey(name: HourlyWeatherKeys.cloudCover)
-  List<int>? get cloudCover;
+  List<double>? get cloudCover;
   @override
   @JsonKey(ignore: true)
   _$$HourlyImplCopyWith<_$HourlyImpl> get copyWith =>

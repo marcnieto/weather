@@ -22,6 +22,7 @@ class WeatherDataRepository implements WeatherRepository {
       latitude: latitude,
       longitude: longitude,
       temperatureUnit: temperatureUnit,
+      windSpeedUnit: WindSpeedUnits.milesPerHour,
       forecastDays: forecastDays,
       current: currentWeatherProperties,
       daily: dailyWeatherProperties,

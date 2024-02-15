@@ -11,13 +11,14 @@ _$CurrentImpl _$$CurrentImplFromJson(Map<String, dynamic> json) =>
       time:
           json['time'] == null ? null : DateTime.parse(json['time'] as String),
       temperature: (json['temperature_2m'] as num?)?.toDouble(),
-      humidity: json['relative_humidity_2m'] as int?,
-      precipitation: json['precipitation'] as int?,
-      rain: json['rain'] as int?,
-      showers: json['showers'] as int?,
-      snowfall: json['snowfall'] as int?,
+      humidity: (json['relative_humidity_2m'] as num?)?.toDouble(),
+      precipitation: (json['precipitation'] as num?)?.toDouble(),
+      rain: (json['rain'] as num?)?.toDouble(),
+      showers: (json['showers'] as num?)?.toDouble(),
+      snowfall: (json['snowfall'] as num?)?.toDouble(),
       windSpeed: (json['wind_speed_10m'] as num?)?.toDouble(),
-      direction: json['wind_direction_10m'] as int?,
+      direction: (json['wind_direction_10m'] as num?)?.toDouble(),
+      cloudCover: (json['cloud_cover'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$CurrentImplToJson(_$CurrentImpl instance) =>
@@ -31,4 +32,5 @@ Map<String, dynamic> _$$CurrentImplToJson(_$CurrentImpl instance) =>
       'snowfall': instance.snowfall,
       'wind_speed_10m': instance.windSpeed,
       'wind_direction_10m': instance.direction,
+      'cloud_cover': instance.cloudCover,
     };

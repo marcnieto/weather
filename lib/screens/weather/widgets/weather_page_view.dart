@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:weather/utilities/ui_template.dart';
 
 class WeatherPageView extends StatelessWidget {
   final int itemCount;
@@ -24,10 +25,16 @@ class WeatherPageView extends StatelessWidget {
           itemBuilder: builder,
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom: 20),
+          padding: const EdgeInsets.only(bottom: PaddingSpec.large),
           child: SmoothPageIndicator(
             controller: _controller,
             count: itemCount,
+            effect: const WormEffect(
+              dotHeight: 8,
+              dotWidth: 8,
+              spacing: 4,
+              type: WormType.thinUnderground,
+            ),
           ),
         )
       ],

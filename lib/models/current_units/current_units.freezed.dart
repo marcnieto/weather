@@ -37,6 +37,8 @@ mixin _$CurrentUnits {
   String? get windSpeed => throw _privateConstructorUsedError;
   @JsonKey(name: CurrentWeatherKeys.windDirection)
   String? get windDirection => throw _privateConstructorUsedError;
+  @JsonKey(name: CurrentWeatherKeys.cloudCover)
+  String? get cloudCover => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,7 +61,8 @@ abstract class $CurrentUnitsCopyWith<$Res> {
       @JsonKey(name: CurrentWeatherKeys.showers) String? showers,
       @JsonKey(name: CurrentWeatherKeys.snowfall) String? snowfall,
       @JsonKey(name: CurrentWeatherKeys.windSpeed) String? windSpeed,
-      @JsonKey(name: CurrentWeatherKeys.windDirection) String? windDirection});
+      @JsonKey(name: CurrentWeatherKeys.windDirection) String? windDirection,
+      @JsonKey(name: CurrentWeatherKeys.cloudCover) String? cloudCover});
 }
 
 /// @nodoc
@@ -84,6 +87,7 @@ class _$CurrentUnitsCopyWithImpl<$Res, $Val extends CurrentUnits>
     Object? snowfall = freezed,
     Object? windSpeed = freezed,
     Object? windDirection = freezed,
+    Object? cloudCover = freezed,
   }) {
     return _then(_value.copyWith(
       time: freezed == time
@@ -122,6 +126,10 @@ class _$CurrentUnitsCopyWithImpl<$Res, $Val extends CurrentUnits>
           ? _value.windDirection
           : windDirection // ignore: cast_nullable_to_non_nullable
               as String?,
+      cloudCover: freezed == cloudCover
+          ? _value.cloudCover
+          : cloudCover // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -143,7 +151,8 @@ abstract class _$$CurrentUnitsImplCopyWith<$Res>
       @JsonKey(name: CurrentWeatherKeys.showers) String? showers,
       @JsonKey(name: CurrentWeatherKeys.snowfall) String? snowfall,
       @JsonKey(name: CurrentWeatherKeys.windSpeed) String? windSpeed,
-      @JsonKey(name: CurrentWeatherKeys.windDirection) String? windDirection});
+      @JsonKey(name: CurrentWeatherKeys.windDirection) String? windDirection,
+      @JsonKey(name: CurrentWeatherKeys.cloudCover) String? cloudCover});
 }
 
 /// @nodoc
@@ -166,6 +175,7 @@ class __$$CurrentUnitsImplCopyWithImpl<$Res>
     Object? snowfall = freezed,
     Object? windSpeed = freezed,
     Object? windDirection = freezed,
+    Object? cloudCover = freezed,
   }) {
     return _then(_$CurrentUnitsImpl(
       time: freezed == time
@@ -204,6 +214,10 @@ class __$$CurrentUnitsImplCopyWithImpl<$Res>
           ? _value.windDirection
           : windDirection // ignore: cast_nullable_to_non_nullable
               as String?,
+      cloudCover: freezed == cloudCover
+          ? _value.cloudCover
+          : cloudCover // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -220,7 +234,8 @@ class _$CurrentUnitsImpl implements _CurrentUnits {
       @JsonKey(name: CurrentWeatherKeys.showers) this.showers,
       @JsonKey(name: CurrentWeatherKeys.snowfall) this.snowfall,
       @JsonKey(name: CurrentWeatherKeys.windSpeed) this.windSpeed,
-      @JsonKey(name: CurrentWeatherKeys.windDirection) this.windDirection});
+      @JsonKey(name: CurrentWeatherKeys.windDirection) this.windDirection,
+      @JsonKey(name: CurrentWeatherKeys.cloudCover) this.cloudCover});
 
   factory _$CurrentUnitsImpl.fromJson(Map<String, dynamic> json) =>
       _$$CurrentUnitsImplFromJson(json);
@@ -251,10 +266,13 @@ class _$CurrentUnitsImpl implements _CurrentUnits {
   @override
   @JsonKey(name: CurrentWeatherKeys.windDirection)
   final String? windDirection;
+  @override
+  @JsonKey(name: CurrentWeatherKeys.cloudCover)
+  final String? cloudCover;
 
   @override
   String toString() {
-    return 'CurrentUnits(time: $time, temperature: $temperature, humidity: $humidity, precipitation: $precipitation, rain: $rain, showers: $showers, snowfall: $snowfall, windSpeed: $windSpeed, windDirection: $windDirection)';
+    return 'CurrentUnits(time: $time, temperature: $temperature, humidity: $humidity, precipitation: $precipitation, rain: $rain, showers: $showers, snowfall: $snowfall, windSpeed: $windSpeed, windDirection: $windDirection, cloudCover: $cloudCover)';
   }
 
   @override
@@ -276,13 +294,25 @@ class _$CurrentUnitsImpl implements _CurrentUnits {
             (identical(other.windSpeed, windSpeed) ||
                 other.windSpeed == windSpeed) &&
             (identical(other.windDirection, windDirection) ||
-                other.windDirection == windDirection));
+                other.windDirection == windDirection) &&
+            (identical(other.cloudCover, cloudCover) ||
+                other.cloudCover == cloudCover));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, time, temperature, humidity,
-      precipitation, rain, showers, snowfall, windSpeed, windDirection);
+  int get hashCode => Object.hash(
+      runtimeType,
+      time,
+      temperature,
+      humidity,
+      precipitation,
+      rain,
+      showers,
+      snowfall,
+      windSpeed,
+      windDirection,
+      cloudCover);
 
   @JsonKey(ignore: true)
   @override
@@ -311,7 +341,9 @@ abstract class _CurrentUnits implements CurrentUnits {
       @JsonKey(name: CurrentWeatherKeys.snowfall) final String? snowfall,
       @JsonKey(name: CurrentWeatherKeys.windSpeed) final String? windSpeed,
       @JsonKey(name: CurrentWeatherKeys.windDirection)
-      final String? windDirection}) = _$CurrentUnitsImpl;
+      final String? windDirection,
+      @JsonKey(name: CurrentWeatherKeys.cloudCover)
+      final String? cloudCover}) = _$CurrentUnitsImpl;
 
   factory _CurrentUnits.fromJson(Map<String, dynamic> json) =
       _$CurrentUnitsImpl.fromJson;
@@ -342,6 +374,9 @@ abstract class _CurrentUnits implements CurrentUnits {
   @override
   @JsonKey(name: CurrentWeatherKeys.windDirection)
   String? get windDirection;
+  @override
+  @JsonKey(name: CurrentWeatherKeys.cloudCover)
+  String? get cloudCover;
   @override
   @JsonKey(ignore: true)
   _$$CurrentUnitsImplCopyWith<_$CurrentUnitsImpl> get copyWith =>

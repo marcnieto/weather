@@ -10,8 +10,8 @@ class Hourly with _$Hourly {
     List<DateTime>? time,
     @JsonKey(name: HourlyWeatherKeys.temperature) List<double>? temperature,
     @JsonKey(name: HourlyWeatherKeys.precipitationProbability)
-    List<int>? precipitationProbability,
-    @JsonKey(name: HourlyWeatherKeys.cloudCover) List<int>? cloudCover,
+    List<double>? precipitationProbability,
+    @JsonKey(name: HourlyWeatherKeys.cloudCover) List<double>? cloudCover,
   }) = _Hourly;
 
   factory Hourly.fromJson(Map<String, dynamic> json) => _$HourlyFromJson(json);

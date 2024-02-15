@@ -2,7 +2,9 @@ part of 'weather_bloc.dart';
 
 @freezed
 class WeatherState with _$WeatherState {
-  const factory WeatherState.initial() = WeatherStateInitial;
+  const factory WeatherState.initial({
+    @Default(false) bool locationServicesEnabled,
+  }) = WeatherStateInitial;
 
   const factory WeatherState.loading() = WeatherStateLocationLoading;
 

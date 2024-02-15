@@ -24,19 +24,21 @@ mixin _$Current {
   @JsonKey(name: CurrentWeatherKeys.temperature)
   double? get temperature => throw _privateConstructorUsedError;
   @JsonKey(name: CurrentWeatherKeys.relativeHumidity)
-  int? get humidity => throw _privateConstructorUsedError;
+  double? get humidity => throw _privateConstructorUsedError;
   @JsonKey(name: CurrentWeatherKeys.precipitation)
-  int? get precipitation => throw _privateConstructorUsedError;
+  double? get precipitation => throw _privateConstructorUsedError;
   @JsonKey(name: CurrentWeatherKeys.rain)
-  int? get rain => throw _privateConstructorUsedError;
+  double? get rain => throw _privateConstructorUsedError;
   @JsonKey(name: CurrentWeatherKeys.showers)
-  int? get showers => throw _privateConstructorUsedError;
+  double? get showers => throw _privateConstructorUsedError;
   @JsonKey(name: CurrentWeatherKeys.snowfall)
-  int? get snowfall => throw _privateConstructorUsedError;
+  double? get snowfall => throw _privateConstructorUsedError;
   @JsonKey(name: CurrentWeatherKeys.windSpeed)
   double? get windSpeed => throw _privateConstructorUsedError;
   @JsonKey(name: CurrentWeatherKeys.windDirection)
-  int? get direction => throw _privateConstructorUsedError;
+  double? get direction => throw _privateConstructorUsedError;
+  @JsonKey(name: CurrentWeatherKeys.cloudCover)
+  double? get cloudCover => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,13 +53,14 @@ abstract class $CurrentCopyWith<$Res> {
   $Res call(
       {DateTime? time,
       @JsonKey(name: CurrentWeatherKeys.temperature) double? temperature,
-      @JsonKey(name: CurrentWeatherKeys.relativeHumidity) int? humidity,
-      @JsonKey(name: CurrentWeatherKeys.precipitation) int? precipitation,
-      @JsonKey(name: CurrentWeatherKeys.rain) int? rain,
-      @JsonKey(name: CurrentWeatherKeys.showers) int? showers,
-      @JsonKey(name: CurrentWeatherKeys.snowfall) int? snowfall,
+      @JsonKey(name: CurrentWeatherKeys.relativeHumidity) double? humidity,
+      @JsonKey(name: CurrentWeatherKeys.precipitation) double? precipitation,
+      @JsonKey(name: CurrentWeatherKeys.rain) double? rain,
+      @JsonKey(name: CurrentWeatherKeys.showers) double? showers,
+      @JsonKey(name: CurrentWeatherKeys.snowfall) double? snowfall,
       @JsonKey(name: CurrentWeatherKeys.windSpeed) double? windSpeed,
-      @JsonKey(name: CurrentWeatherKeys.windDirection) int? direction});
+      @JsonKey(name: CurrentWeatherKeys.windDirection) double? direction,
+      @JsonKey(name: CurrentWeatherKeys.cloudCover) double? cloudCover});
 }
 
 /// @nodoc
@@ -82,6 +85,7 @@ class _$CurrentCopyWithImpl<$Res, $Val extends Current>
     Object? snowfall = freezed,
     Object? windSpeed = freezed,
     Object? direction = freezed,
+    Object? cloudCover = freezed,
   }) {
     return _then(_value.copyWith(
       time: freezed == time
@@ -95,23 +99,23 @@ class _$CurrentCopyWithImpl<$Res, $Val extends Current>
       humidity: freezed == humidity
           ? _value.humidity
           : humidity // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       precipitation: freezed == precipitation
           ? _value.precipitation
           : precipitation // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       rain: freezed == rain
           ? _value.rain
           : rain // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       showers: freezed == showers
           ? _value.showers
           : showers // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       snowfall: freezed == snowfall
           ? _value.snowfall
           : snowfall // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       windSpeed: freezed == windSpeed
           ? _value.windSpeed
           : windSpeed // ignore: cast_nullable_to_non_nullable
@@ -119,7 +123,11 @@ class _$CurrentCopyWithImpl<$Res, $Val extends Current>
       direction: freezed == direction
           ? _value.direction
           : direction // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
+      cloudCover: freezed == cloudCover
+          ? _value.cloudCover
+          : cloudCover // ignore: cast_nullable_to_non_nullable
+              as double?,
     ) as $Val);
   }
 }
@@ -134,13 +142,14 @@ abstract class _$$CurrentImplCopyWith<$Res> implements $CurrentCopyWith<$Res> {
   $Res call(
       {DateTime? time,
       @JsonKey(name: CurrentWeatherKeys.temperature) double? temperature,
-      @JsonKey(name: CurrentWeatherKeys.relativeHumidity) int? humidity,
-      @JsonKey(name: CurrentWeatherKeys.precipitation) int? precipitation,
-      @JsonKey(name: CurrentWeatherKeys.rain) int? rain,
-      @JsonKey(name: CurrentWeatherKeys.showers) int? showers,
-      @JsonKey(name: CurrentWeatherKeys.snowfall) int? snowfall,
+      @JsonKey(name: CurrentWeatherKeys.relativeHumidity) double? humidity,
+      @JsonKey(name: CurrentWeatherKeys.precipitation) double? precipitation,
+      @JsonKey(name: CurrentWeatherKeys.rain) double? rain,
+      @JsonKey(name: CurrentWeatherKeys.showers) double? showers,
+      @JsonKey(name: CurrentWeatherKeys.snowfall) double? snowfall,
       @JsonKey(name: CurrentWeatherKeys.windSpeed) double? windSpeed,
-      @JsonKey(name: CurrentWeatherKeys.windDirection) int? direction});
+      @JsonKey(name: CurrentWeatherKeys.windDirection) double? direction,
+      @JsonKey(name: CurrentWeatherKeys.cloudCover) double? cloudCover});
 }
 
 /// @nodoc
@@ -163,6 +172,7 @@ class __$$CurrentImplCopyWithImpl<$Res>
     Object? snowfall = freezed,
     Object? windSpeed = freezed,
     Object? direction = freezed,
+    Object? cloudCover = freezed,
   }) {
     return _then(_$CurrentImpl(
       time: freezed == time
@@ -176,23 +186,23 @@ class __$$CurrentImplCopyWithImpl<$Res>
       humidity: freezed == humidity
           ? _value.humidity
           : humidity // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       precipitation: freezed == precipitation
           ? _value.precipitation
           : precipitation // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       rain: freezed == rain
           ? _value.rain
           : rain // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       showers: freezed == showers
           ? _value.showers
           : showers // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       snowfall: freezed == snowfall
           ? _value.snowfall
           : snowfall // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       windSpeed: freezed == windSpeed
           ? _value.windSpeed
           : windSpeed // ignore: cast_nullable_to_non_nullable
@@ -200,7 +210,11 @@ class __$$CurrentImplCopyWithImpl<$Res>
       direction: freezed == direction
           ? _value.direction
           : direction // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
+      cloudCover: freezed == cloudCover
+          ? _value.cloudCover
+          : cloudCover // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -217,7 +231,8 @@ class _$CurrentImpl implements _Current {
       @JsonKey(name: CurrentWeatherKeys.showers) this.showers,
       @JsonKey(name: CurrentWeatherKeys.snowfall) this.snowfall,
       @JsonKey(name: CurrentWeatherKeys.windSpeed) this.windSpeed,
-      @JsonKey(name: CurrentWeatherKeys.windDirection) this.direction});
+      @JsonKey(name: CurrentWeatherKeys.windDirection) this.direction,
+      @JsonKey(name: CurrentWeatherKeys.cloudCover) this.cloudCover});
 
   factory _$CurrentImpl.fromJson(Map<String, dynamic> json) =>
       _$$CurrentImplFromJson(json);
@@ -229,29 +244,32 @@ class _$CurrentImpl implements _Current {
   final double? temperature;
   @override
   @JsonKey(name: CurrentWeatherKeys.relativeHumidity)
-  final int? humidity;
+  final double? humidity;
   @override
   @JsonKey(name: CurrentWeatherKeys.precipitation)
-  final int? precipitation;
+  final double? precipitation;
   @override
   @JsonKey(name: CurrentWeatherKeys.rain)
-  final int? rain;
+  final double? rain;
   @override
   @JsonKey(name: CurrentWeatherKeys.showers)
-  final int? showers;
+  final double? showers;
   @override
   @JsonKey(name: CurrentWeatherKeys.snowfall)
-  final int? snowfall;
+  final double? snowfall;
   @override
   @JsonKey(name: CurrentWeatherKeys.windSpeed)
   final double? windSpeed;
   @override
   @JsonKey(name: CurrentWeatherKeys.windDirection)
-  final int? direction;
+  final double? direction;
+  @override
+  @JsonKey(name: CurrentWeatherKeys.cloudCover)
+  final double? cloudCover;
 
   @override
   String toString() {
-    return 'Current(time: $time, temperature: $temperature, humidity: $humidity, precipitation: $precipitation, rain: $rain, showers: $showers, snowfall: $snowfall, windSpeed: $windSpeed, direction: $direction)';
+    return 'Current(time: $time, temperature: $temperature, humidity: $humidity, precipitation: $precipitation, rain: $rain, showers: $showers, snowfall: $snowfall, windSpeed: $windSpeed, direction: $direction, cloudCover: $cloudCover)';
   }
 
   @override
@@ -273,13 +291,15 @@ class _$CurrentImpl implements _Current {
             (identical(other.windSpeed, windSpeed) ||
                 other.windSpeed == windSpeed) &&
             (identical(other.direction, direction) ||
-                other.direction == direction));
+                other.direction == direction) &&
+            (identical(other.cloudCover, cloudCover) ||
+                other.cloudCover == cloudCover));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, time, temperature, humidity,
-      precipitation, rain, showers, snowfall, windSpeed, direction);
+      precipitation, rain, showers, snowfall, windSpeed, direction, cloudCover);
 
   @JsonKey(ignore: true)
   @override
@@ -299,14 +319,17 @@ abstract class _Current implements Current {
   factory _Current(
       {final DateTime? time,
       @JsonKey(name: CurrentWeatherKeys.temperature) final double? temperature,
-      @JsonKey(name: CurrentWeatherKeys.relativeHumidity) final int? humidity,
-      @JsonKey(name: CurrentWeatherKeys.precipitation) final int? precipitation,
-      @JsonKey(name: CurrentWeatherKeys.rain) final int? rain,
-      @JsonKey(name: CurrentWeatherKeys.showers) final int? showers,
-      @JsonKey(name: CurrentWeatherKeys.snowfall) final int? snowfall,
+      @JsonKey(name: CurrentWeatherKeys.relativeHumidity)
+      final double? humidity,
+      @JsonKey(name: CurrentWeatherKeys.precipitation)
+      final double? precipitation,
+      @JsonKey(name: CurrentWeatherKeys.rain) final double? rain,
+      @JsonKey(name: CurrentWeatherKeys.showers) final double? showers,
+      @JsonKey(name: CurrentWeatherKeys.snowfall) final double? snowfall,
       @JsonKey(name: CurrentWeatherKeys.windSpeed) final double? windSpeed,
-      @JsonKey(name: CurrentWeatherKeys.windDirection)
-      final int? direction}) = _$CurrentImpl;
+      @JsonKey(name: CurrentWeatherKeys.windDirection) final double? direction,
+      @JsonKey(name: CurrentWeatherKeys.cloudCover)
+      final double? cloudCover}) = _$CurrentImpl;
 
   factory _Current.fromJson(Map<String, dynamic> json) = _$CurrentImpl.fromJson;
 
@@ -317,25 +340,28 @@ abstract class _Current implements Current {
   double? get temperature;
   @override
   @JsonKey(name: CurrentWeatherKeys.relativeHumidity)
-  int? get humidity;
+  double? get humidity;
   @override
   @JsonKey(name: CurrentWeatherKeys.precipitation)
-  int? get precipitation;
+  double? get precipitation;
   @override
   @JsonKey(name: CurrentWeatherKeys.rain)
-  int? get rain;
+  double? get rain;
   @override
   @JsonKey(name: CurrentWeatherKeys.showers)
-  int? get showers;
+  double? get showers;
   @override
   @JsonKey(name: CurrentWeatherKeys.snowfall)
-  int? get snowfall;
+  double? get snowfall;
   @override
   @JsonKey(name: CurrentWeatherKeys.windSpeed)
   double? get windSpeed;
   @override
   @JsonKey(name: CurrentWeatherKeys.windDirection)
-  int? get direction;
+  double? get direction;
+  @override
+  @JsonKey(name: CurrentWeatherKeys.cloudCover)
+  double? get cloudCover;
   @override
   @JsonKey(ignore: true)
   _$$CurrentImplCopyWith<_$CurrentImpl> get copyWith =>

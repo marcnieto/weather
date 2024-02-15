@@ -15,10 +15,10 @@ _$HourlyImpl _$$HourlyImplFromJson(Map<String, dynamic> json) => _$HourlyImpl(
           .toList(),
       precipitationProbability:
           (json['precipitation_probability'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toDouble())
               .toList(),
       cloudCover: (json['cloud_cover'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toDouble())
           .toList(),
     );
 

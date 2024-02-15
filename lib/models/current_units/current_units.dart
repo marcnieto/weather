@@ -16,6 +16,7 @@ class CurrentUnits with _$CurrentUnits {
     @JsonKey(name: CurrentWeatherKeys.snowfall) String? snowfall,
     @JsonKey(name: CurrentWeatherKeys.windSpeed) String? windSpeed,
     @JsonKey(name: CurrentWeatherKeys.windDirection) String? windDirection,
+    @JsonKey(name: CurrentWeatherKeys.cloudCover) String? cloudCover,
   }) = _CurrentUnits;
 
   factory CurrentUnits.fromJson(Map<String, dynamic> json) =>
