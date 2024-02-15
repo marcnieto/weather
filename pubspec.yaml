@@ -11,7 +11,10 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   freezed: ^2.4.5
-  location:
+
+  # Location
+  geolocator:
+  geocoding:
 
   # State management
   freezed_annotation:

@@ -1,61 +1,69 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/app/environment.dart';
 import 'package:provider/provider.dart';
+import 'package:weather/blocs/weather/weather_bloc.dart';
 import 'package:weather/clients/open_meteo_api/open_meteo_api_client.dart';
-import 'package:weather/models/forecast/forecast.dart';
-import 'package:weather/utilities/weather_keys.dart';
+import 'package:weather/models/location.dart';
+import 'package:weather/repositories/location/location_services_repository.dart';
+import 'package:weather/repositories/weather/weather_data_repository.dart';
+import 'package:weather/screens/weather/weather_screen.dart';
+import 'package:weather/user/user_preferences.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Clients
   final httpClient = Dio();
-
   final weatherClient = OpenMeteoAPIClient(
     httpClient,
     baseUrl: Environment.openMeteoBaseUrl,
   );
 
+  // Repositories
+  final repository = WeatherDataRepository(apiClient: weatherClient);
+
+  final locationServices = LocationServicesRepository();
+  final locationServicesEnabled =
+      await locationServices.locationServicesGranted();
+
+  // User Preferences
+  Location? currentLocation = locationServicesEnabled
+      ? await locationServices.getCurrentLocation()
+      : null;
+  final userPreferences = UserPreferences(currentLocation: currentLocation);
+
+  // Blocs
+  final weatherBloc = WeatherBloc(
+    initialState: const WeatherState.initial(),
+    repository: repository,
+    locationServices: locationServices,
+  );
+
+  if (locationServicesEnabled) {
+    weatherBloc.add(
+      WeatherEvent.load(preferences: userPreferences),
+    );
+  }
+
   runApp(
     MultiProvider(
       providers: [
-        Provider<OpenMeteoAPIClient>.value(
-          value: weatherClient,
+        Provider<UserPreferences>.value(
+          value: userPreferences,
         ),
       ],
-      child: const WeatherApp(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<WeatherBloc>(
+            create: (context) => weatherBloc,
+          ),
+        ],
+        child: const MaterialApp(
+          home: WeatherScreen(),
+        ),
+      ),
     ),
   );
-}
-
-class WeatherApp extends StatelessWidget {
-  const WeatherApp({super.key});
-
-  Future<Forecast> _fetchCurrentWeather(BuildContext context) async {
-    final forecast = await context.read<OpenMeteoAPIClient>().getForecast(
-      latitude: 52.52,
-      longitude: 13.41,
-      temperatureUnit: TemperatureUnits.fahrenheit,
-      current: [
-        CurrentWeatherKeys.temperature,
-        CurrentWeatherKeys.apparentTemperature,
-        CurrentWeatherKeys.cloudCover,
-        CurrentWeatherKeys.relativeHumidity,
-        CurrentWeatherKeys.windSpeed,
-        CurrentWeatherKeys.windDirection,
-      ],
-    );
-    return forecast;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Weather',
-      home: Scaffold(
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => _fetchCurrentWeather(context),
-            child: const Icon(Icons.add),
-          ),
-          body: Container()),
-    );
-  }
 }

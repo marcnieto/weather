@@ -16,42 +16,46 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$WeatherEvent {
-  UserPreferences get preferences => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() requestLocationServices,
     required TResult Function(UserPreferences preferences) load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? requestLocationServices,
     TResult? Function(UserPreferences preferences)? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? requestLocationServices,
     TResult Function(UserPreferences preferences)? load,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(WeatherEventRequestLocationServices value)
+        requestLocationServices,
     required TResult Function(WeatherEventLoad value) load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(WeatherEventRequestLocationServices value)?
+        requestLocationServices,
     TResult? Function(WeatherEventLoad value)? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(WeatherEventRequestLocationServices value)?
+        requestLocationServices,
     TResult Function(WeatherEventLoad value)? load,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $WeatherEventCopyWith<WeatherEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +64,6 @@ abstract class $WeatherEventCopyWith<$Res> {
   factory $WeatherEventCopyWith(
           WeatherEvent value, $Res Function(WeatherEvent) then) =
       _$WeatherEventCopyWithImpl<$Res, WeatherEvent>;
-  @useResult
-  $Res call({UserPreferences preferences});
 }
 
 /// @nodoc
@@ -73,28 +75,124 @@ class _$WeatherEventCopyWithImpl<$Res, $Val extends WeatherEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? preferences = null,
-  }) {
-    return _then(_value.copyWith(
-      preferences: null == preferences
-          ? _value.preferences
-          : preferences // ignore: cast_nullable_to_non_nullable
-              as UserPreferences,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$WeatherEventLoadImplCopyWith<$Res>
-    implements $WeatherEventCopyWith<$Res> {
+abstract class _$$WeatherEventRequestLocationServicesImplCopyWith<$Res> {
+  factory _$$WeatherEventRequestLocationServicesImplCopyWith(
+          _$WeatherEventRequestLocationServicesImpl value,
+          $Res Function(_$WeatherEventRequestLocationServicesImpl) then) =
+      __$$WeatherEventRequestLocationServicesImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$WeatherEventRequestLocationServicesImplCopyWithImpl<$Res>
+    extends _$WeatherEventCopyWithImpl<$Res,
+        _$WeatherEventRequestLocationServicesImpl>
+    implements _$$WeatherEventRequestLocationServicesImplCopyWith<$Res> {
+  __$$WeatherEventRequestLocationServicesImplCopyWithImpl(
+      _$WeatherEventRequestLocationServicesImpl _value,
+      $Res Function(_$WeatherEventRequestLocationServicesImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$WeatherEventRequestLocationServicesImpl
+    implements WeatherEventRequestLocationServices {
+  const _$WeatherEventRequestLocationServicesImpl();
+
+  @override
+  String toString() {
+    return 'WeatherEvent.requestLocationServices()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WeatherEventRequestLocationServicesImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() requestLocationServices,
+    required TResult Function(UserPreferences preferences) load,
+  }) {
+    return requestLocationServices();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? requestLocationServices,
+    TResult? Function(UserPreferences preferences)? load,
+  }) {
+    return requestLocationServices?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? requestLocationServices,
+    TResult Function(UserPreferences preferences)? load,
+    required TResult orElse(),
+  }) {
+    if (requestLocationServices != null) {
+      return requestLocationServices();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(WeatherEventRequestLocationServices value)
+        requestLocationServices,
+    required TResult Function(WeatherEventLoad value) load,
+  }) {
+    return requestLocationServices(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(WeatherEventRequestLocationServices value)?
+        requestLocationServices,
+    TResult? Function(WeatherEventLoad value)? load,
+  }) {
+    return requestLocationServices?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(WeatherEventRequestLocationServices value)?
+        requestLocationServices,
+    TResult Function(WeatherEventLoad value)? load,
+    required TResult orElse(),
+  }) {
+    if (requestLocationServices != null) {
+      return requestLocationServices(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WeatherEventRequestLocationServices implements WeatherEvent {
+  const factory WeatherEventRequestLocationServices() =
+      _$WeatherEventRequestLocationServicesImpl;
+}
+
+/// @nodoc
+abstract class _$$WeatherEventLoadImplCopyWith<$Res> {
   factory _$$WeatherEventLoadImplCopyWith(_$WeatherEventLoadImpl value,
           $Res Function(_$WeatherEventLoadImpl) then) =
       __$$WeatherEventLoadImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({UserPreferences preferences});
 }
@@ -156,6 +254,7 @@ class _$WeatherEventLoadImpl implements WeatherEventLoad {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() requestLocationServices,
     required TResult Function(UserPreferences preferences) load,
   }) {
     return load(preferences);
@@ -164,6 +263,7 @@ class _$WeatherEventLoadImpl implements WeatherEventLoad {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? requestLocationServices,
     TResult? Function(UserPreferences preferences)? load,
   }) {
     return load?.call(preferences);
@@ -172,6 +272,7 @@ class _$WeatherEventLoadImpl implements WeatherEventLoad {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? requestLocationServices,
     TResult Function(UserPreferences preferences)? load,
     required TResult orElse(),
   }) {
@@ -184,6 +285,8 @@ class _$WeatherEventLoadImpl implements WeatherEventLoad {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(WeatherEventRequestLocationServices value)
+        requestLocationServices,
     required TResult Function(WeatherEventLoad value) load,
   }) {
     return load(this);
@@ -192,6 +295,8 @@ class _$WeatherEventLoadImpl implements WeatherEventLoad {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(WeatherEventRequestLocationServices value)?
+        requestLocationServices,
     TResult? Function(WeatherEventLoad value)? load,
   }) {
     return load?.call(this);
@@ -200,6 +305,8 @@ class _$WeatherEventLoadImpl implements WeatherEventLoad {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(WeatherEventRequestLocationServices value)?
+        requestLocationServices,
     TResult Function(WeatherEventLoad value)? load,
     required TResult orElse(),
   }) {
@@ -214,9 +321,7 @@ abstract class WeatherEventLoad implements WeatherEvent {
   const factory WeatherEventLoad({required final UserPreferences preferences}) =
       _$WeatherEventLoadImpl;
 
-  @override
   UserPreferences get preferences;
-  @override
   @JsonKey(ignore: true)
   _$$WeatherEventLoadImplCopyWith<_$WeatherEventLoadImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -226,33 +331,32 @@ abstract class WeatherEventLoad implements WeatherEvent {
 mixin _$WeatherState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationServicesDisabled,
+    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
-    required TResult Function(Forecast forecast) loaded,
+    required TResult Function(List<Forecast> forecasts) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationServicesDisabled,
+    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
-    TResult? Function(Forecast forecast)? loaded,
+    TResult? Function(List<Forecast> forecasts)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationServicesDisabled,
+    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
-    TResult Function(Forecast forecast)? loaded,
+    TResult Function(List<Forecast> forecasts)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WeatherStateLocationServicesDisabled value)
-        locationServicesDisabled,
+    required TResult Function(WeatherStateInitial value) initial,
     required TResult Function(WeatherStateLocationLoading value) loading,
     required TResult Function(WeatherStateLocationError value) error,
     required TResult Function(WeatherStateLoaded value) loaded,
@@ -260,8 +364,7 @@ mixin _$WeatherState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WeatherStateLocationServicesDisabled value)?
-        locationServicesDisabled,
+    TResult? Function(WeatherStateInitial value)? initial,
     TResult? Function(WeatherStateLocationLoading value)? loading,
     TResult? Function(WeatherStateLocationError value)? error,
     TResult? Function(WeatherStateLoaded value)? loaded,
@@ -269,8 +372,7 @@ mixin _$WeatherState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WeatherStateLocationServicesDisabled value)?
-        locationServicesDisabled,
+    TResult Function(WeatherStateInitial value)? initial,
     TResult Function(WeatherStateLocationLoading value)? loading,
     TResult Function(WeatherStateLocationError value)? error,
     TResult Function(WeatherStateLoaded value)? loaded,
@@ -298,40 +400,36 @@ class _$WeatherStateCopyWithImpl<$Res, $Val extends WeatherState>
 }
 
 /// @nodoc
-abstract class _$$WeatherStateLocationServicesDisabledImplCopyWith<$Res> {
-  factory _$$WeatherStateLocationServicesDisabledImplCopyWith(
-          _$WeatherStateLocationServicesDisabledImpl value,
-          $Res Function(_$WeatherStateLocationServicesDisabledImpl) then) =
-      __$$WeatherStateLocationServicesDisabledImplCopyWithImpl<$Res>;
+abstract class _$$WeatherStateInitialImplCopyWith<$Res> {
+  factory _$$WeatherStateInitialImplCopyWith(_$WeatherStateInitialImpl value,
+          $Res Function(_$WeatherStateInitialImpl) then) =
+      __$$WeatherStateInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$WeatherStateLocationServicesDisabledImplCopyWithImpl<$Res>
-    extends _$WeatherStateCopyWithImpl<$Res,
-        _$WeatherStateLocationServicesDisabledImpl>
-    implements _$$WeatherStateLocationServicesDisabledImplCopyWith<$Res> {
-  __$$WeatherStateLocationServicesDisabledImplCopyWithImpl(
-      _$WeatherStateLocationServicesDisabledImpl _value,
-      $Res Function(_$WeatherStateLocationServicesDisabledImpl) _then)
+class __$$WeatherStateInitialImplCopyWithImpl<$Res>
+    extends _$WeatherStateCopyWithImpl<$Res, _$WeatherStateInitialImpl>
+    implements _$$WeatherStateInitialImplCopyWith<$Res> {
+  __$$WeatherStateInitialImplCopyWithImpl(_$WeatherStateInitialImpl _value,
+      $Res Function(_$WeatherStateInitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$WeatherStateLocationServicesDisabledImpl
-    implements WeatherStateLocationServicesDisabled {
-  const _$WeatherStateLocationServicesDisabledImpl();
+class _$WeatherStateInitialImpl implements WeatherStateInitial {
+  const _$WeatherStateInitialImpl();
 
   @override
   String toString() {
-    return 'WeatherState.locationServicesDisabled()';
+    return 'WeatherState.initial()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WeatherStateLocationServicesDisabledImpl);
+            other is _$WeatherStateInitialImpl);
   }
 
   @override
@@ -340,36 +438,36 @@ class _$WeatherStateLocationServicesDisabledImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationServicesDisabled,
+    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
-    required TResult Function(Forecast forecast) loaded,
+    required TResult Function(List<Forecast> forecasts) loaded,
   }) {
-    return locationServicesDisabled();
+    return initial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationServicesDisabled,
+    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
-    TResult? Function(Forecast forecast)? loaded,
+    TResult? Function(List<Forecast> forecasts)? loaded,
   }) {
-    return locationServicesDisabled?.call();
+    return initial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationServicesDisabled,
+    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
-    TResult Function(Forecast forecast)? loaded,
+    TResult Function(List<Forecast> forecasts)? loaded,
     required TResult orElse(),
   }) {
-    if (locationServicesDisabled != null) {
-      return locationServicesDisabled();
+    if (initial != null) {
+      return initial();
     }
     return orElse();
   }
@@ -377,47 +475,43 @@ class _$WeatherStateLocationServicesDisabledImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WeatherStateLocationServicesDisabled value)
-        locationServicesDisabled,
+    required TResult Function(WeatherStateInitial value) initial,
     required TResult Function(WeatherStateLocationLoading value) loading,
     required TResult Function(WeatherStateLocationError value) error,
     required TResult Function(WeatherStateLoaded value) loaded,
   }) {
-    return locationServicesDisabled(this);
+    return initial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WeatherStateLocationServicesDisabled value)?
-        locationServicesDisabled,
+    TResult? Function(WeatherStateInitial value)? initial,
     TResult? Function(WeatherStateLocationLoading value)? loading,
     TResult? Function(WeatherStateLocationError value)? error,
     TResult? Function(WeatherStateLoaded value)? loaded,
   }) {
-    return locationServicesDisabled?.call(this);
+    return initial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WeatherStateLocationServicesDisabled value)?
-        locationServicesDisabled,
+    TResult Function(WeatherStateInitial value)? initial,
     TResult Function(WeatherStateLocationLoading value)? loading,
     TResult Function(WeatherStateLocationError value)? error,
     TResult Function(WeatherStateLoaded value)? loaded,
     required TResult orElse(),
   }) {
-    if (locationServicesDisabled != null) {
-      return locationServicesDisabled(this);
+    if (initial != null) {
+      return initial(this);
     }
     return orElse();
   }
 }
 
-abstract class WeatherStateLocationServicesDisabled implements WeatherState {
-  const factory WeatherStateLocationServicesDisabled() =
-      _$WeatherStateLocationServicesDisabledImpl;
+abstract class WeatherStateInitial implements WeatherState {
+  const factory WeatherStateInitial() = _$WeatherStateInitialImpl;
 }
 
 /// @nodoc
@@ -461,10 +555,10 @@ class _$WeatherStateLocationLoadingImpl implements WeatherStateLocationLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationServicesDisabled,
+    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
-    required TResult Function(Forecast forecast) loaded,
+    required TResult Function(List<Forecast> forecasts) loaded,
   }) {
     return loading();
   }
@@ -472,10 +566,10 @@ class _$WeatherStateLocationLoadingImpl implements WeatherStateLocationLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationServicesDisabled,
+    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
-    TResult? Function(Forecast forecast)? loaded,
+    TResult? Function(List<Forecast> forecasts)? loaded,
   }) {
     return loading?.call();
   }
@@ -483,10 +577,10 @@ class _$WeatherStateLocationLoadingImpl implements WeatherStateLocationLoading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationServicesDisabled,
+    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
-    TResult Function(Forecast forecast)? loaded,
+    TResult Function(List<Forecast> forecasts)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -498,8 +592,7 @@ class _$WeatherStateLocationLoadingImpl implements WeatherStateLocationLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WeatherStateLocationServicesDisabled value)
-        locationServicesDisabled,
+    required TResult Function(WeatherStateInitial value) initial,
     required TResult Function(WeatherStateLocationLoading value) loading,
     required TResult Function(WeatherStateLocationError value) error,
     required TResult Function(WeatherStateLoaded value) loaded,
@@ -510,8 +603,7 @@ class _$WeatherStateLocationLoadingImpl implements WeatherStateLocationLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WeatherStateLocationServicesDisabled value)?
-        locationServicesDisabled,
+    TResult? Function(WeatherStateInitial value)? initial,
     TResult? Function(WeatherStateLocationLoading value)? loading,
     TResult? Function(WeatherStateLocationError value)? error,
     TResult? Function(WeatherStateLoaded value)? loaded,
@@ -522,8 +614,7 @@ class _$WeatherStateLocationLoadingImpl implements WeatherStateLocationLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WeatherStateLocationServicesDisabled value)?
-        locationServicesDisabled,
+    TResult Function(WeatherStateInitial value)? initial,
     TResult Function(WeatherStateLocationLoading value)? loading,
     TResult Function(WeatherStateLocationError value)? error,
     TResult Function(WeatherStateLoaded value)? loaded,
@@ -582,10 +673,10 @@ class _$WeatherStateLocationErrorImpl implements WeatherStateLocationError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationServicesDisabled,
+    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
-    required TResult Function(Forecast forecast) loaded,
+    required TResult Function(List<Forecast> forecasts) loaded,
   }) {
     return error();
   }
@@ -593,10 +684,10 @@ class _$WeatherStateLocationErrorImpl implements WeatherStateLocationError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationServicesDisabled,
+    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
-    TResult? Function(Forecast forecast)? loaded,
+    TResult? Function(List<Forecast> forecasts)? loaded,
   }) {
     return error?.call();
   }
@@ -604,10 +695,10 @@ class _$WeatherStateLocationErrorImpl implements WeatherStateLocationError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationServicesDisabled,
+    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
-    TResult Function(Forecast forecast)? loaded,
+    TResult Function(List<Forecast> forecasts)? loaded,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -619,8 +710,7 @@ class _$WeatherStateLocationErrorImpl implements WeatherStateLocationError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WeatherStateLocationServicesDisabled value)
-        locationServicesDisabled,
+    required TResult Function(WeatherStateInitial value) initial,
     required TResult Function(WeatherStateLocationLoading value) loading,
     required TResult Function(WeatherStateLocationError value) error,
     required TResult Function(WeatherStateLoaded value) loaded,
@@ -631,8 +721,7 @@ class _$WeatherStateLocationErrorImpl implements WeatherStateLocationError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WeatherStateLocationServicesDisabled value)?
-        locationServicesDisabled,
+    TResult? Function(WeatherStateInitial value)? initial,
     TResult? Function(WeatherStateLocationLoading value)? loading,
     TResult? Function(WeatherStateLocationError value)? error,
     TResult? Function(WeatherStateLoaded value)? loaded,
@@ -643,8 +732,7 @@ class _$WeatherStateLocationErrorImpl implements WeatherStateLocationError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WeatherStateLocationServicesDisabled value)?
-        locationServicesDisabled,
+    TResult Function(WeatherStateInitial value)? initial,
     TResult Function(WeatherStateLocationLoading value)? loading,
     TResult Function(WeatherStateLocationError value)? error,
     TResult Function(WeatherStateLoaded value)? loaded,
@@ -667,9 +755,7 @@ abstract class _$$WeatherStateLoadedImplCopyWith<$Res> {
           $Res Function(_$WeatherStateLoadedImpl) then) =
       __$$WeatherStateLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Forecast forecast});
-
-  $ForecastCopyWith<$Res> get forecast;
+  $Res call({List<Forecast> forecasts});
 }
 
 /// @nodoc
@@ -683,36 +769,34 @@ class __$$WeatherStateLoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? forecast = null,
+    Object? forecasts = null,
   }) {
     return _then(_$WeatherStateLoadedImpl(
-      forecast: null == forecast
-          ? _value.forecast
-          : forecast // ignore: cast_nullable_to_non_nullable
-              as Forecast,
+      forecasts: null == forecasts
+          ? _value._forecasts
+          : forecasts // ignore: cast_nullable_to_non_nullable
+              as List<Forecast>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ForecastCopyWith<$Res> get forecast {
-    return $ForecastCopyWith<$Res>(_value.forecast, (value) {
-      return _then(_value.copyWith(forecast: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$WeatherStateLoadedImpl implements WeatherStateLoaded {
-  const _$WeatherStateLoadedImpl({required this.forecast});
+  const _$WeatherStateLoadedImpl({required final List<Forecast> forecasts})
+      : _forecasts = forecasts;
 
+  final List<Forecast> _forecasts;
   @override
-  final Forecast forecast;
+  List<Forecast> get forecasts {
+    if (_forecasts is EqualUnmodifiableListView) return _forecasts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_forecasts);
+  }
 
   @override
   String toString() {
-    return 'WeatherState.loaded(forecast: $forecast)';
+    return 'WeatherState.loaded(forecasts: $forecasts)';
   }
 
   @override
@@ -720,12 +804,13 @@ class _$WeatherStateLoadedImpl implements WeatherStateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WeatherStateLoadedImpl &&
-            (identical(other.forecast, forecast) ||
-                other.forecast == forecast));
+            const DeepCollectionEquality()
+                .equals(other._forecasts, _forecasts));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, forecast);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_forecasts));
 
   @JsonKey(ignore: true)
   @override
@@ -737,36 +822,36 @@ class _$WeatherStateLoadedImpl implements WeatherStateLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationServicesDisabled,
+    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
-    required TResult Function(Forecast forecast) loaded,
+    required TResult Function(List<Forecast> forecasts) loaded,
   }) {
-    return loaded(forecast);
+    return loaded(forecasts);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationServicesDisabled,
+    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
-    TResult? Function(Forecast forecast)? loaded,
+    TResult? Function(List<Forecast> forecasts)? loaded,
   }) {
-    return loaded?.call(forecast);
+    return loaded?.call(forecasts);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationServicesDisabled,
+    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
-    TResult Function(Forecast forecast)? loaded,
+    TResult Function(List<Forecast> forecasts)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(forecast);
+      return loaded(forecasts);
     }
     return orElse();
   }
@@ -774,8 +859,7 @@ class _$WeatherStateLoadedImpl implements WeatherStateLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WeatherStateLocationServicesDisabled value)
-        locationServicesDisabled,
+    required TResult Function(WeatherStateInitial value) initial,
     required TResult Function(WeatherStateLocationLoading value) loading,
     required TResult Function(WeatherStateLocationError value) error,
     required TResult Function(WeatherStateLoaded value) loaded,
@@ -786,8 +870,7 @@ class _$WeatherStateLoadedImpl implements WeatherStateLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WeatherStateLocationServicesDisabled value)?
-        locationServicesDisabled,
+    TResult? Function(WeatherStateInitial value)? initial,
     TResult? Function(WeatherStateLocationLoading value)? loading,
     TResult? Function(WeatherStateLocationError value)? error,
     TResult? Function(WeatherStateLoaded value)? loaded,
@@ -798,8 +881,7 @@ class _$WeatherStateLoadedImpl implements WeatherStateLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WeatherStateLocationServicesDisabled value)?
-        locationServicesDisabled,
+    TResult Function(WeatherStateInitial value)? initial,
     TResult Function(WeatherStateLocationLoading value)? loading,
     TResult Function(WeatherStateLocationError value)? error,
     TResult Function(WeatherStateLoaded value)? loaded,
@@ -813,10 +895,10 @@ class _$WeatherStateLoadedImpl implements WeatherStateLoaded {
 }
 
 abstract class WeatherStateLoaded implements WeatherState {
-  const factory WeatherStateLoaded({required final Forecast forecast}) =
+  const factory WeatherStateLoaded({required final List<Forecast> forecasts}) =
       _$WeatherStateLoadedImpl;
 
-  Forecast get forecast;
+  List<Forecast> get forecasts;
   @JsonKey(ignore: true)
   _$$WeatherStateLoadedImplCopyWith<_$WeatherStateLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
