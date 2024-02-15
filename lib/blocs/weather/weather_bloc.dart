@@ -38,6 +38,8 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       return;
     }
 
+    emit(const WeatherState.loading());
+
     final List<Forecast> forecasts = [];
 
     if (currentLocation != null) {
