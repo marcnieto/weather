@@ -135,7 +135,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
           ),
           const SizedBox(height: PaddingSpec.medium),
-          if (_showLocationServices) _locationServicesSetting(context),
+          if (_showLocationServices) ...[
+            const Text(
+              'To fetch weather data from your area, please consider enabling location services.',
+              style: TextStyleSpec.normalMediumDark,
+            ),
+            _locationServicesSetting(context),
+          ],
         ],
       );
 
