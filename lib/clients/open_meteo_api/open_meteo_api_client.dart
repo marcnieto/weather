@@ -22,5 +22,6 @@ abstract class OpenMeteoAPIClient {
     @Query('current') List<String>? current,
     @Query('hourly') List<String>? hourly,
     @Query('daily') List<String>? daily,
+    @Query('timezone') String? timezone,
   });
 }

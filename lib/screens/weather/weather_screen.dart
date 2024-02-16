@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:weather/blocs/weather/weather_bloc.dart';
-import 'package:weather/models/location.dart';
+import 'package:weather/models/location/location.dart';
 import 'package:weather/repositories/location/location_repository.dart';
 import 'package:weather/screens/settings/settings_screen.dart';
 import 'package:weather/screens/weather/widgets/loading_page.dart';
@@ -36,7 +36,7 @@ class WeatherScreen extends StatelessWidget {
     BuildContext context, {
     required Location location,
   }) async {
-    context.read<UserPreferences>().currentLocation = location;
+    context.read<UserPreferences>().setCurrentLocation(location);
     _loadForecast(context);
   }
 
@@ -133,7 +133,52 @@ class WeatherScreen extends StatelessWidget {
       (location) {
         if (location == null) return;
 
-        context.read<UserPreferences>().locations.add(location);
+        context.read<UserPreferences>().addLocation(location);
+
+        _loadForecast(context);
+      },
+    );
+  }
+
+  Future<void> _deleteLocation(BuildContext context) async {
+    if (_pageController.page == 0) return;
+
+    showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Delete Location'),
+        content: const Text(
+          'Do you want to delete this location?',
+          style: TextStyleSpec.normalMediumDark,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(color: ColorSpec.skyBlue),
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text(
+              'Delete',
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
+        ],
+      ),
+    ).then(
+      (willDelete) {
+        if (willDelete != true) return;
+
+        final index = _pageController.page;
+        if (index == null) return;
+
+        // page and user custom locations index are offset by 1
+        context
+            .read<UserPreferences>()
+            .removeLocationAt(index: index.floor() - 1);
 
         _loadForecast(context);
       },
@@ -161,7 +206,16 @@ class WeatherScreen extends StatelessWidget {
                   child: const Icon(
                     Icons.add,
                     color: Colors.white,
-                    size: 30,
+                    size: MediumSizeSpec.extraLarge,
+                  ),
+                ),
+                const SizedBox(width: PaddingSpec.extraSmall),
+                Button(
+                  onPressed: () => _deleteLocation(context),
+                  child: const Icon(
+                    Icons.delete,
+                    color: Colors.white,
+                    size: MediumSizeSpec.extraLarge,
                   ),
                 ),
                 const Spacer(),
@@ -179,6 +233,9 @@ class WeatherScreen extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
+                const SizedBox(
+                  width: MediumSizeSpec.extraLarge + PaddingSpec.extraSmall,
+                ),
                 Button(
                   onPressed: () => _pushSettingsScreen(context),
                   child: const Icon(

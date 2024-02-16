@@ -54,7 +54,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               value: _showHourlyForecast,
               activeColor: ColorSpec.skyBlue,
               onChanged: (value) {
-                context.read<UserPreferences>().showHourlyForecast = value;
+                context.read<UserPreferences>().setShowHourlyForecast(value);
                 setState(() {
                   _showHourlyForecast = value;
                 });
@@ -67,7 +67,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               value: _showDailyForecast,
               activeColor: ColorSpec.skyBlue,
               onChanged: (value) {
-                context.read<UserPreferences>().showDailyForecast = value;
+                context.read<UserPreferences>().setShowDailyForecast(value);
                 setState(() {
                   _showDailyForecast = value;
                 });
@@ -86,7 +86,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               },
               onValueChanged: (value) {
                 if (value == null) return;
-                context.read<UserPreferences>().forecastDays = value;
+                context.read<UserPreferences>().setForecastDays(value);
                 setState(() {
                   _forecastDays = value;
                 });
@@ -104,7 +104,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               },
               onValueChanged: (value) {
                 if (value == null) return;
-                context.read<UserPreferences>().temperatureUnit = value;
+                context.read<UserPreferences>().setTemperatureUnit(value);
                 setState(() {
                   _temperatureUnit = value;
                 });

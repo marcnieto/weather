@@ -5,7 +5,7 @@ import 'package:weather/app/environment.dart';
 import 'package:provider/provider.dart';
 import 'package:weather/blocs/weather/weather_bloc.dart';
 import 'package:weather/clients/open_meteo_api/open_meteo_api_client.dart';
-import 'package:weather/models/location.dart';
+import 'package:weather/models/location/location.dart';
 import 'package:weather/repositories/location/location_repository.dart';
 import 'package:weather/repositories/location/location_services_repository.dart';
 import 'package:weather/repositories/weather/weather_data_repository.dart';
@@ -33,11 +33,9 @@ Future<void> main() async {
   Location? currentLocation = locationServicesEnabled
       ? await locationServices.getCurrentLocation()
       : null;
-  final userPreferences = UserPreferences(
-    currentLocation: currentLocation,
-    showHourlyForecast: true,
-    showDailyForecast: true,
-  );
+
+  final userPreferences = UserPreferences(currentLocation: currentLocation);
+  await userPreferences.fetchPersistence();
 
   // Blocs
   final weatherBloc = WeatherBloc(

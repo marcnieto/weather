@@ -29,6 +29,7 @@ class _OpenMeteoAPIClient implements OpenMeteoAPIClient {
     List<String>? current,
     List<String>? hourly,
     List<String>? daily,
+    String? timezone,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -41,6 +42,7 @@ class _OpenMeteoAPIClient implements OpenMeteoAPIClient {
       r'current': current,
       r'hourly': hourly,
       r'daily': daily,
+      r'timezone': timezone,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};

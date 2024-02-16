@@ -1,7 +1,6 @@
 extension WeatherTimeExtension on DateTime {
   String toHourlyFormat() {
-    final finalHour = (hour + timeZoneOffset.inHours) % 24;
-    return '${finalHour % 12 == 0 ? 12 : finalHour % 12}${finalHour < 12 ? 'AM' : 'PM'}';
+    return '${hour % 12 == 0 ? 12 : hour % 12}${hour < 12 ? 'AM' : 'PM'}';
   }
 
   String toDailyFormat() {

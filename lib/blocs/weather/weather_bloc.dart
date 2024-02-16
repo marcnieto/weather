@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:weather/models/forecast/forecast.dart';
-import 'package:weather/models/location.dart';
+import 'package:weather/models/location/location.dart';
 import 'package:weather/repositories/location/location_repository.dart';
 import 'package:weather/repositories/weather/weather_repository.dart';
 import 'package:weather/user/user_preferences.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather/models/forecast/forecast.dart';
-import 'package:weather/models/location.dart';
+import 'package:weather/models/location/location.dart';
 import 'package:weather/screens/weather/widgets/current_section.dart';
 import 'package:weather/screens/weather/widgets/daily_section.dart';
 import 'package:weather/screens/weather/widgets/hourly_section.dart';

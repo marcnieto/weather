@@ -4,6 +4,7 @@ import 'package:weather/models/forecast/forecast.dart';
 import 'package:weather/utilities/weather_keys.dart';
 
 const int kForecastHours = 12;
+const String timezone = 'auto';
 
 class WeatherDataRepository implements WeatherRepository {
   final OpenMeteoAPIClient apiClient;
@@ -31,6 +32,7 @@ class WeatherDataRepository implements WeatherRepository {
       current: currentWeatherProperties,
       daily: dailyWeatherProperties,
       hourly: hourlyWeatherProperties,
+      timezone: timezone,
     );
   }
 }

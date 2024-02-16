@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather/models/current/current.dart';
 import 'package:weather/models/current_units/current_units.dart';
-import 'package:weather/models/location.dart';
+import 'package:weather/models/location/location.dart';
 import 'package:weather/utilities/ui_template.dart';
 import 'package:weather/utilities/weather_helper.dart';
 

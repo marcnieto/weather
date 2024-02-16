@@ -1,4 +1,4 @@
-import 'package:weather/models/location.dart';
+import 'package:weather/models/location/location.dart';
 import 'package:weather/repositories/location/location_repository.dart';
 import 'package:geolocator/geolocator.dart';
 

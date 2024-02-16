@@ -195,6 +195,8 @@ abstract class _$$WeatherEventLoadImplCopyWith<$Res> {
       __$$WeatherEventLoadImplCopyWithImpl<$Res>;
   @useResult
   $Res call({UserPreferences preferences});
+
+  $UserPreferencesCopyWith<$Res> get preferences;
 }
 
 /// @nodoc
@@ -216,6 +218,14 @@ class __$$WeatherEventLoadImplCopyWithImpl<$Res>
           : preferences // ignore: cast_nullable_to_non_nullable
               as UserPreferences,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserPreferencesCopyWith<$Res> get preferences {
+    return $UserPreferencesCopyWith<$Res>(_value.preferences, (value) {
+      return _then(_value.copyWith(preferences: value));
+    });
   }
 }
 
