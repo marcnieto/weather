@@ -99,7 +99,12 @@ class HourlySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return hourly.time != null && hourly.time!.isNotEmpty
+    final isHourlyDataValid = WeatherHelper.checkValidHourlyData(
+      hourly: hourly,
+      units: hourlyUnits,
+    );
+
+    return isHourlyDataValid
         ? Padding(
             padding: const EdgeInsets.symmetric(horizontal: PaddingSpec.medium),
             child: _body(),

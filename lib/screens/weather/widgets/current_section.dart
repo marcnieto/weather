@@ -71,7 +71,7 @@ class CurrentSection extends StatelessWidget {
               ],
               if (current.windSpeed != null && current.direction != null)
                 Text(
-                  '${current.windSpeed?.round()}${units.windSpeed} Wind ${WeatherHelper.textForWindDirection(current.direction!)} ',
+                  '${current.windSpeed?.round()}${units.windSpeed} Wind ${WeatherHelper.textForWindDirection(current.direction!)}',
                   style: TextStyleSpec.normalLargeLight,
                 ),
               if (current.humidity != null)

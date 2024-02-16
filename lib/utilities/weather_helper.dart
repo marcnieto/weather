@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:weather/models/daily/daily.dart';
+import 'package:weather/models/daily_units/daily_units.dart';
+import 'package:weather/models/hourly/hourly.dart';
+import 'package:weather/models/hourly_units/hourly_units.dart';
 import 'package:weather/utilities/ui_template.dart';
 
 abstract class WeatherHelper {
@@ -200,5 +204,79 @@ abstract class WeatherHelper {
     } else {
       return 'NW';
     }
+  }
+
+  static bool checkValidHourlyData({
+    required Hourly hourly,
+    required HourlyUnits units,
+  }) {
+    // check all not null
+    bool notNull = hourly.time != null &&
+        hourly.temperature != null &&
+        hourly.isDay != null &&
+        hourly.weatherCode != null &&
+        hourly.precipitationProbability != null &&
+        units.temperature != null &&
+        units.precipitationProbability != null;
+
+    if (notNull == false) return false;
+
+    // check all not empty
+    bool notEmpty = hourly.time!.isNotEmpty &&
+        hourly.temperature!.isNotEmpty &&
+        hourly.isDay!.isNotEmpty &&
+        hourly.weatherCode!.isNotEmpty &&
+        hourly.precipitationProbability!.isNotEmpty;
+
+    if (notEmpty == false) return false;
+
+    // check all the same size
+    final size = hourly.time!.length;
+    bool sameSize = hourly.time!.length == size &&
+        hourly.temperature!.length == size &&
+        hourly.isDay!.length == size &&
+        hourly.weatherCode!.length == size &&
+        hourly.precipitationProbability!.length == size;
+
+    if (sameSize == false) return false;
+
+    return true;
+  }
+
+  static bool checkValidDailyData({
+    required Daily daily,
+    required DailyUnits units,
+  }) {
+    // check all not null
+    bool notNull = daily.time != null &&
+        daily.temperatureMax != null &&
+        daily.temperatureMin != null &&
+        daily.weatherCode != null &&
+        daily.precipitationProbabilityMax != null &&
+        units.temperatureMax != null &&
+        units.temperatureMin != null &&
+        units.precipitationProbabilityMax != null;
+
+    if (notNull == false) return false;
+
+    // check all not empty
+    bool notEmpty = daily.time!.isNotEmpty &&
+        daily.temperatureMax!.isNotEmpty &&
+        daily.temperatureMin!.isNotEmpty &&
+        daily.weatherCode!.isNotEmpty &&
+        daily.precipitationProbabilityMax!.isNotEmpty;
+
+    if (notEmpty == false) return false;
+
+    // check all the same size
+    final size = daily.time!.length;
+    bool sameSize = daily.temperatureMax!.length == size &&
+        daily.temperatureMin!.length == size &&
+        daily.weatherCode!.length == size &&
+        daily.precipitationProbabilityMax!.length == size;
+
+    if (sameSize == false) return false;
+
+    return true;
   }
 }

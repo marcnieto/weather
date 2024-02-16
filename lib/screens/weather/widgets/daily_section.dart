@@ -96,7 +96,12 @@ class DailySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return daily.time != null && daily.time!.isNotEmpty
+    final isDailyDataValid = WeatherHelper.checkValidDailyData(
+      daily: daily,
+      units: dailyUnits,
+    );
+
+    return isDailyDataValid
         ? Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: PaddingSpec.medium,
