@@ -22,9 +22,11 @@ class Location {
       return null;
     }
 
-    return placemarks.first.locality != null &&
+    String? name = placemarks.first.locality != null &&
             placemarks.first.locality!.isNotEmpty
         ? placemarks.first.locality
         : placemarks.first.administrativeArea;
+
+    return name != null && name.isEmpty ? null : name;
   }
 }
