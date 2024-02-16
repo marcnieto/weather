@@ -31,14 +31,23 @@ dart run build_runner build
 To build the app onto simulator or device, run
 
 ```
-flutter run
+flutter run lib/app/main.dart
 ```
 
-I've conveniently added a shell script to run all of these commands for you. You can run this command
+Or likewise, you can build an apk to be installed on your device manually
 
 ```
+flutter build apk lib/app/main.dart
+```
+
+I've conveniently added a shell script to run all of these commands for you. You can run either of these commands to run on simulator or build an apk
+
+```
+sh run.sh
 sh build.sh
 ```
+
+I've also added app-release.apk to the root directory if you'd like to download and install the app straight to your device.
 
 # Testing
 
