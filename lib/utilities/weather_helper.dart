@@ -77,12 +77,12 @@ abstract class WeatherHelper {
           )
         : const Icon(
             Icons.mode_night,
-            color: Colors.yellow,
+            color: ColorSpec.moonYellow,
           );
 
     const cloudIcon = Icon(
       Icons.cloud,
-      color: ColorSpec.moonYellow,
+      color: Colors.white,
     );
 
     const rainIcon = Icon(

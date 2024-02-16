@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:weather/models/current/current.dart';
 import 'package:weather/models/current_units/current_units.dart';
-
 import 'package:weather/models/location.dart';
-
 import 'package:weather/utilities/ui_template.dart';
 import 'package:weather/utilities/weather_helper.dart';
 
@@ -30,6 +27,20 @@ class CurrentSection extends StatelessWidget {
         builder: (context, snapshot) {
           return Column(
             children: [
+              if (snapshot.data == null) ...[
+                const Text(
+                  'Location',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  '(${location.latitude}, ${location.longitude})',
+                  style: TextStyleSpec.normalSmallLight,
+                ),
+              ],
               if (snapshot.data != null)
                 Text(
                   snapshot.data!,

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 abstract class ColorSpec {
   static const Color skyBlue = Color(0xFF448EE4);
-  static const Color moonYellow = Color(0xFFFBF6D8);
+  static const Color darkBlue = Color(0xFF00008B);
+  static const Color moonYellow = Color(0xFFF5EBA0);
 }
 
 abstract class PaddingSpec {
@@ -11,6 +12,30 @@ abstract class PaddingSpec {
   static const double medium = 15.0;
   static const double large = 20.0;
   static const double extraLarge = 25.0;
+}
+
+abstract class MicroDimensionSpec {
+  static const double extraSmall = 0.2;
+  static const double small = 0.4;
+  static const double medium = 0.6;
+  static const double large = 0.8;
+  static const double extraLarge = 1.0;
+}
+
+abstract class SmallSizeSpec {
+  static const double extraSmall = 2.0;
+  static const double small = 4.0;
+  static const double medium = 6.0;
+  static const double large = 8.0;
+  static const double extraLarge = 10.0;
+}
+
+abstract class MediumSizeSpec {
+  static const double extraSmall = 10.0;
+  static const double small = 15.0;
+  static const double medium = 20.0;
+  static const double large = 25.0;
+  static const double extraLarge = 30.0;
 }
 
 abstract class CornerRadiusSpec {

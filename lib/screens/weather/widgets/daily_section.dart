@@ -19,10 +19,10 @@ class DailySection extends StatelessWidget {
 
   Widget _dailyEntry(DailyProperty property) => ListTile(
         leading: SizedBox(
-          width: 50,
+          width: 70,
           child: Text(
             property.time.toDailyFormat(),
-            style: TextStyleSpec.normalSmallLight,
+            style: TextStyleSpec.boldMediumLight,
           ),
         ),
         title: Column(
@@ -37,13 +37,15 @@ class DailySection extends StatelessWidget {
             if (property.precipitationProbability > 0)
               Text(
                 '${property.precipitationProbability.round()}${property.precipitationProbabilityUnit}',
-                style: TextStyleSpec.normalSmallLight,
+                style: TextStyleSpec.normalSmallLight.copyWith(
+                  color: ColorSpec.darkBlue,
+                ),
               ),
           ],
         ),
         trailing: Text(
-          'H: ${property.temperatureMax.round()}${property.temperatureUnit} L: ${property.temperatureMin.round()}${property.temperatureUnit}',
-          style: TextStyleSpec.normalSmallLight,
+          'H: ${property.temperatureMax.round()}${property.temperatureUnit}  |  L: ${property.temperatureMin.round()}${property.temperatureUnit}',
+          style: TextStyleSpec.normalMediumLight,
         ),
       );
 

@@ -22,7 +22,7 @@ class HourlySection extends StatelessWidget {
           children: [
             Text(
               property.time.toHourlyFormat(),
-              style: TextStyleSpec.normalSmallLight,
+              style: TextStyleSpec.boldMediumLight,
             ),
             const Spacer(),
             WeatherHelper.emojiForWeatherCode(
@@ -34,19 +34,21 @@ class HourlySection extends StatelessWidget {
             if (property.precipitationProbability > 0)
               Text(
                 '${property.precipitationProbability.round()}${property.precipitationProbabilityUnit}',
-                style: TextStyleSpec.normalSmallLight,
+                style: TextStyleSpec.boldSmallLight.copyWith(
+                  color: ColorSpec.darkBlue,
+                ),
               ),
             const Spacer(),
             Text(
               '${property.temperature.round()}${property.temperatureUnit}',
-              style: TextStyleSpec.normalSmallLight,
+              style: TextStyleSpec.boldMediumLight,
             ),
           ],
         ),
       );
 
   Widget _listView() => SizedBox(
-        height: 80,
+        height: 90,
         child: ListView.separated(
           padding: const EdgeInsets.symmetric(horizontal: PaddingSpec.small),
           separatorBuilder: (context, index) =>

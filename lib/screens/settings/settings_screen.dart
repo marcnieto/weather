@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/user/user_preferences.dart';
 import 'package:weather/utilities/ui_template.dart';
+import 'package:weather/utilities/weather_keys.dart';
 
 class SettingsScreen extends StatefulWidget {
   final UserPreferences preferences;
@@ -20,6 +21,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   late bool _showHourlyForecast;
   late bool _showDailyForecast;
   late int _forecastDays;
+  late String _temperatureUnit;
 
   Widget _setting({
     required String title,
@@ -91,6 +93,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
               },
             ),
           ),
+          _setting(
+            title: 'Temperature Unit',
+            trailing: CupertinoSlidingSegmentedControl<String>(
+              groupValue: _temperatureUnit,
+              thumbColor: ColorSpec.skyBlue,
+              children: const {
+                TemperatureUnits.celcius: Text('°C'),
+                TemperatureUnits.fahrenheit: Text('°F'),
+              },
+              onValueChanged: (value) {
+                if (value == null) return;
+                context.read<UserPreferences>().temperatureUnit = value;
+                setState(() {
+                  _temperatureUnit = value;
+                });
+              },
+            ),
+          ),
         ],
       );
 
@@ -111,6 +131,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _showHourlyForecast = widget.preferences.showHourlyForecast;
     _showDailyForecast = widget.preferences.showDailyForecast;
     _forecastDays = widget.preferences.forecastDays;
+    _temperatureUnit = widget.preferences.temperatureUnit;
   }
 
   @override

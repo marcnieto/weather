@@ -14,7 +14,7 @@ class WeatherDataRepository implements WeatherRepository {
   Future<Forecast> getForecast({
     required double latitude,
     required double longitude,
-    String temperatureUnit = TemperatureUnits.fahrenheit,
+    String? temperatureUnit,
     int? forecastDays,
     int forecastHours = kForecastHours,
     List<String>? currentWeatherProperties,

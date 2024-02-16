@@ -55,6 +55,91 @@ class WeatherScreen extends StatelessWidget {
     );
   }
 
+  Future<void> _presentAddLocationAlert(BuildContext context) async {
+    double? latitude;
+    double? longitude;
+
+    showDialog<Location?>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Add Location'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: Colors.grey,
+                ),
+              ),
+              child: TextField(
+                decoration: const InputDecoration.collapsed(
+                  hintText: 'Latitude',
+                ).copyWith(
+                  contentPadding: const EdgeInsets.only(top: 6, left: 12),
+                ),
+                keyboardType: TextInputType.number,
+                onChanged: (value) => latitude = double.tryParse(value),
+              ),
+            ),
+            const SizedBox(height: PaddingSpec.small),
+            Container(
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: Colors.grey,
+                ),
+              ),
+              child: TextField(
+                decoration: const InputDecoration.collapsed(
+                  hintText: 'Longitude',
+                ).copyWith(
+                  contentPadding: const EdgeInsets.only(top: 6, left: 12),
+                ),
+                keyboardType: TextInputType.number,
+                onChanged: (value) => longitude = double.tryParse(value),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, null),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(
+                context,
+                latitude != null && longitude != null
+                    ? Location(
+                        latitude: latitude!,
+                        longitude: longitude!,
+                      )
+                    : null),
+            child: const Text(
+              'Add',
+              style: TextStyle(color: ColorSpec.skyBlue),
+            ),
+          ),
+        ],
+      ),
+    ).then(
+      (location) {
+        if (location == null) return;
+
+        context.read<UserPreferences>().locations.add(location);
+
+        _loadForecast(context);
+      },
+    );
+  }
+
   Widget _tabBarBuilder(
     BuildContext context, {
     required Widget Function(BuildContext) builder,
@@ -67,12 +152,12 @@ class WeatherScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: PaddingSpec.medium),
             height: 60,
-            color: ColorSpec.skyBlue.withOpacity(0.8),
+            color: ColorSpec.skyBlue.withOpacity(MicroDimensionSpec.large),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Button(
-                  onPressed: () {},
+                  onPressed: () => _presentAddLocationAlert(context),
                   child: const Icon(
                     Icons.add,
                     color: Colors.white,
@@ -83,10 +168,13 @@ class WeatherScreen extends StatelessWidget {
                 SmoothPageIndicator(
                   controller: _pageController,
                   count: count,
-                  effect: const WormEffect(
-                    dotHeight: 8,
-                    dotWidth: 8,
-                    spacing: 4,
+                  effect: WormEffect(
+                    dotHeight: SmallSizeSpec.large,
+                    dotWidth: SmallSizeSpec.large,
+                    spacing: PaddingSpec.extraSmall,
+                    dotColor:
+                        Colors.white.withOpacity(MicroDimensionSpec.small),
+                    activeDotColor: Colors.white,
                     type: WormType.thinUnderground,
                   ),
                 ),
@@ -96,7 +184,7 @@ class WeatherScreen extends StatelessWidget {
                   child: const Icon(
                     Icons.settings,
                     color: Colors.white,
-                    size: 30,
+                    size: MediumSizeSpec.large,
                   ),
                 ),
               ],

@@ -4,7 +4,7 @@ abstract class WeatherRepository {
   Future<Forecast> getForecast({
     required double latitude,
     required double longitude,
-    String temperatureUnit,
+    String? temperatureUnit,
     int? forecastDays,
     List<String>? currentWeatherProperties,
     List<String>? dailyWeatherProperties,

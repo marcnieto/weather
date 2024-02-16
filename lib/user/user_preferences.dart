@@ -3,7 +3,7 @@ import 'package:weather/utilities/weather_keys.dart';
 
 class UserPreferences {
   Location? currentLocation;
-  List<Location> locations;
+  List<Location> locations = [];
   String temperatureUnit;
   bool showHourlyForecast;
   bool showDailyForecast;
@@ -11,7 +11,6 @@ class UserPreferences {
 
   UserPreferences({
     this.currentLocation,
-    this.locations = const [],
     this.temperatureUnit = TemperatureUnits.fahrenheit,
     this.showHourlyForecast = false,
     this.showDailyForecast = false,

@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:weather/models/forecast/forecast.dart';
+import 'package:weather/models/location.dart';
 import 'package:weather/repositories/location/location_repository.dart';
 import 'package:weather/repositories/weather/weather_repository.dart';
 import 'package:weather/user/user_preferences.dart';
@@ -65,30 +66,24 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
     emit(const WeatherState.loading());
 
+    final List<Forecast> forecasts = [];
+    List<Location> locations = [];
+
+    if (currentLocation != null) {
+      locations.add(currentLocation);
+    }
+
+    locations.addAll(preferences.locations);
+
     try {
-      final List<Forecast> forecasts = [];
-
-      if (currentLocation != null) {
-        final forecast = await repository.getForecast(
-          latitude: currentLocation.latitude,
-          longitude: currentLocation.longitude,
-          temperatureUnit: preferences.temperatureUnit,
-          currentWeatherProperties: kCurrentWeatherProperties,
-          hourlyWeatherProperties:
-              preferences.showHourlyForecast ? kHourlyWeatherProperties : null,
-          dailyWeatherProperties:
-              preferences.showDailyForecast ? kDailyWeatherProperties : null,
-          forecastDays:
-              preferences.showDailyForecast ? preferences.forecastDays : null,
-        );
-        forecasts.add(forecast);
-      }
-
-      for (final location in preferences.locations) {
+      for (final location in locations) {
         final forecast = await repository.getForecast(
           latitude: location.latitude,
           longitude: location.longitude,
-          temperatureUnit: preferences.temperatureUnit,
+          temperatureUnit:
+              preferences.temperatureUnit == TemperatureUnits.fahrenheit
+                  ? TemperatureUnits.fahrenheit
+                  : null,
           currentWeatherProperties: kCurrentWeatherProperties,
           hourlyWeatherProperties:
               preferences.showHourlyForecast ? kHourlyWeatherProperties : null,

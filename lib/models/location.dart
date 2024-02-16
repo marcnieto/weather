@@ -10,13 +10,21 @@ class Location {
   });
 
   Future<String?> getCityName() async {
-    List<geocode.Placemark> placemarks =
-        await geocode.placemarkFromCoordinates(latitude, longitude);
+    List<geocode.Placemark> placemarks;
+
+    try {
+      placemarks = await geocode.placemarkFromCoordinates(latitude, longitude);
+    } catch (_) {
+      return null;
+    }
 
     if (placemarks.isEmpty) {
       return null;
     }
 
-    return placemarks.first.locality;
+    return placemarks.first.locality != null &&
+            placemarks.first.locality!.isNotEmpty
+        ? placemarks.first.locality
+        : placemarks.first.administrativeArea;
   }
 }
