@@ -52,7 +52,12 @@ extension UserPersistence on UserPreferences {
   }
 
   Future<void> addLocation(Location location) async {
-    locations.add(location);
+    if (locations.isEmpty) {
+      locations = [location];
+    } else {
+      locations.add(location);
+    }
+
     await setPersistence();
   }
 

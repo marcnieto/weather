@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/repositories/location/location_repository.dart';
 import 'package:weather/user/user_preferences.dart';
 import 'package:weather/utilities/ui_template.dart';
 import 'package:weather/utilities/weather_keys.dart';
+import 'package:weather/widgets/rounded_text_button.dart';
 
+// ignore_for_file: use_build_context_synchronously
 class SettingsScreen extends StatefulWidget {
   final UserPreferences preferences;
 
@@ -22,6 +25,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
   late bool _showDailyForecast;
   late int _forecastDays;
   late String _temperatureUnit;
+
+  bool _showLocationServices = false;
+
+  Widget _locationServicesSetting(BuildContext context) => RoundedTextButton(
+        onPressed: () async {
+          final locationRepository = context.read<LocationRepository>();
+          final granted = await locationRepository.requestPermission();
+          if (granted) {
+            final location = await locationRepository.getCurrentLocation();
+            context.read<UserPreferences>().setCurrentLocation(location);
+          }
+          setState(() {
+            _showLocationServices = !granted;
+          });
+        },
+        text: 'Enable Location Services',
+        foregroundColor: Colors.white,
+        backgroundColor: ColorSpec.skyBlue,
+        height: 40,
+      );
 
   Widget _setting({
     required String title,
@@ -111,6 +134,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               },
             ),
           ),
+          const SizedBox(height: PaddingSpec.medium),
+          if (_showLocationServices) _locationServicesSetting(context),
         ],
       );
 
@@ -132,6 +157,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _showDailyForecast = widget.preferences.showDailyForecast;
     _forecastDays = widget.preferences.forecastDays;
     _temperatureUnit = widget.preferences.temperatureUnit;
+    _showLocationServices = widget.preferences.currentLocation == null;
   }
 
   @override

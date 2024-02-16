@@ -44,11 +44,9 @@ Future<void> main() async {
     locationServices: locationServices,
   );
 
-  if (locationServicesEnabled) {
-    weatherBloc.add(
-      WeatherEvent.load(preferences: userPreferences),
-    );
-  }
+  weatherBloc.add(
+    WeatherEvent.load(preferences: userPreferences),
+  );
 
   runApp(
     MultiProvider(

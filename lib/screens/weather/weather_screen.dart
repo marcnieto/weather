@@ -141,6 +141,12 @@ class WeatherScreen extends StatelessWidget {
   }
 
   Future<void> _deleteLocation(BuildContext context) async {
+    final preferences = context.read<UserPreferences>();
+
+    if (preferences.currentLocation == null && preferences.locations.isEmpty) {
+      return;
+    }
+
     if (_pageController.page == 0) return;
 
     showDialog<bool>(
