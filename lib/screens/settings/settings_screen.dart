@@ -134,12 +134,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
               },
             ),
           ),
-          const SizedBox(height: PaddingSpec.medium),
+          const SizedBox(height: PaddingSpec.extraLarge),
           if (_showLocationServices) ...[
             const Text(
               'To fetch weather data from your area, please consider enabling location services.',
               style: TextStyleSpec.normalMediumDark,
+              textAlign: TextAlign.center,
             ),
+            const SizedBox(height: PaddingSpec.small),
             _locationServicesSetting(context),
           ],
         ],
